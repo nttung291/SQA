@@ -25,7 +25,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
      */
     public RegisterContractFrame() {
         initComponents();
-         Connection.createConnection();
+        Connection.createConnection();
     }
 
     public void setAccount(Account account) {
@@ -310,6 +310,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tfEmailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
         } else if (!checkIDNumber()) {
@@ -330,7 +331,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
             else gender = false;
             String dob = cbDay.getSelectedItem().toString() + "/" + cbMonth.getSelectedItem().toString() + "/" + cbYear.getSelectedItem().toString();
             Customer cus = new Customer(this.getAccount(),null,null,city,tfName.getText(),gender,
-                    dob,tfIDNumber.getText(), tfSINumber.getText(), tfEmail.getText(), tfPhoneNumber.getText(), cbPaymentDuration.getSelectedIndex(), null, 0);
+                    dob,tfIDNumber.getText(), tfSINumber.getText(), tfEmail.getText(), tfPhoneNumber.getText(), cbPaymentDuration.getSelectedIndex(), null, 0f);
             lbMessage.setText("Regiter Successed");
             
             ContractOptionFrame contractOptionFrame = new ContractOptionFrame();
@@ -338,6 +339,8 @@ public class RegisterContractFrame extends javax.swing.JFrame {
             contractOptionFrame.setVisible(true);
             this.setVisible(false);
         }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

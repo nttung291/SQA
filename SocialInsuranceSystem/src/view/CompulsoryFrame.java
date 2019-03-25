@@ -5,8 +5,12 @@
  */
 package view;
 
+import dao.CompulsoryContractDAO;
+import dao.Connection;
+import dao.CustomerDAO;
 import dao.HometownDAO;
 import java.util.ArrayList;
+import model.CompulsoryContract;
 import model.Customer;
 import model.Hometown;
 
@@ -29,6 +33,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
      */
     public CompulsoryFrame() {
         initComponents();
+        Connection.createConnection();
     }
 
     /**
@@ -143,12 +148,26 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         } else if (!checkTaxNumber()) {
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
         } else if(!checkCompany()){
-             lbMessage.setText("Company code must equal 10 integer numbers from 010000000 to 949999999, please check your input again");
+            lbMessage.setText("Company code must equal 10 integer numbers from 010000000 to 949999999, please check your input again");
         } else if (!checkSalary()) {
             
         } else {
-            
-            lbMessage.setText("Regiter Successed");
+            ArrayList<CompulsoryContract> ccs = CompulsoryContractDAO.selectAllCompulsoryContract();
+            CompulsoryContract compulsoryContract = new CompulsoryContract(tfCompany.getText(),0, "No description");
+            int row = CompulsoryContractDAO.insertCompulsoryContract(compulsoryContract);
+            System.out.println(row);
+            int result = 0;
+            if (row != -1 && row !=0) {
+                CompulsoryContract inseredContract = CompulsoryContractDAO.selectCompulsoryContractByID(row);
+                Customer inserCustomer = this.getCustomer();
+                inserCustomer.salary = Float.parseFloat(tfSalary.getText());
+                inserCustomer.compulsoryContract = inseredContract;
+                inserCustomer.taxCode = tfTax.getText();
+                result = CustomerDAO.insertCustomer(inserCustomer);
+            }
+            if (result != 0 && result != -1) {
+                 lbMessage.setText("Regiter Successed");
+            } 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -182,15 +201,14 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     
      private boolean checkSalary() {
         Hometown hometown = this.getCustomer().hometown;
-        
-        for(int i=0; i < tfSalary.getText().length(); i++) {
-            if (tfSalary.getText().charAt(i) > '9' || tfSalary.getText().charAt(i) <'0') {
-                lbMessage.setText("Salary field must be numbers");
-                return false;
-            }
-        } 
-        
-        int salary = Integer.parseInt(tfSalary.getText());
+        Float salary;
+        try {
+            salary = Float.parseFloat(tfSalary.getText());
+        } catch (Exception e) {
+            lbMessage.setText("Salary is wrong format");
+            return false;
+        }
+       
         if (hometown.section == 1 && (salary < 4472600 || salary > 29800000)){
             lbMessage.setText("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
