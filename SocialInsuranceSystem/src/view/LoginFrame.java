@@ -7,9 +7,11 @@ package view;
 
 import controller.AccountCtr;
 import dao.Connection;
+import java.awt.Color;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -25,6 +27,27 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
         initComponents();
         Connection.createConnection();
+    }
+    
+    public String getLbMessage() {		
+        return lbMessage.getText();		
+    }	
+
+    public Color getLbMessageColor(){		
+        return lbMessage.getForeground();		
+    }		
+
+    public void setTfPassword(String tfPassword) {		
+        this.tfPassword.setText(tfPassword);		
+    }		
+
+ 
+    public void setTfUsername(String tfUsername) {		
+        this.tfUsername.setText(tfUsername);		
+    }		
+    
+    public JButton getLoginButton() {		
+        return btLogin;		
     }
 
     /**
