@@ -16,7 +16,7 @@ import model.Hometown;
  * @author habui
  */
 public class HometownDAO {
-        public static ArrayList<Hometown> selectAllHometown(){
+    public static ArrayList<Hometown> selectAllHometown(){
         ArrayList<Hometown> result = new ArrayList<Hometown>();
         String sql = "SELECT * FROM Hometown";
         try{
@@ -55,6 +55,21 @@ public class HometownDAO {
             e.printStackTrace();
         }    
         return null;
+    }
+    
+     public static int insertHometown(Hometown hometown){
+        String sql = "INSERT INTO Hometown(Id,Name,Section) VALUES (?,?,?)";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, hometown.ID);
+            ps.setString(2, hometown.name);
+            ps.setInt(3, hometown.section);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
 }

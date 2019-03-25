@@ -16,6 +16,12 @@ public class Hometown {
 
     public Hometown() {
     }
+
+    public Hometown(int ID, String name, int section) {
+        this.ID = ID;
+        this.name = name;
+        this.section = section;
+    }
     
     
 }
