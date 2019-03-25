@@ -44,7 +44,7 @@ public class AccountCtr {
        ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
        if (allAccount.size() > 0) {
            for (int i=0;i<allAccount.size();i++){
-               if (allAccount.get(i).username.equals(username) && allAccount.get(i).password.equals(password)){
+               if (allAccount.get(i).username.equals(username) && allAccount.get(i).password.equals(password) && allAccount.get(i).state == 1){
                    return allAccount.get(i).role;
                } else if (allAccount.get(i).username.equals(username) && !allAccount.get(i).password.equals(password)){
                    return -2;
@@ -54,7 +54,22 @@ public class AccountCtr {
        } else {
            return -1;
        }
-       
+    }
+    
+    public static Account getAccount(String username, String password) {
+        ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
+          if (allAccount.size() > 0) {
+           for (int i=0;i<allAccount.size();i++){
+               if (allAccount.get(i).username.equals(username) && allAccount.get(i).password.equals(password)){
+                   return allAccount.get(i);
+               } else if (allAccount.get(i).username.equals(username) && !allAccount.get(i).password.equals(password)){
+                   return null;
+               }
+           }
+           return null;
+        } else {
+           return null;
+        }
     }
     
     public static int registerAccount(String username, String password, int role, int state, String description) {

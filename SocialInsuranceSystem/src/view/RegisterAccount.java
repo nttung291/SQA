@@ -7,7 +7,6 @@ package view;
 
 import controller.AccountCtr;
 import dao.Connection;
-import java.awt.Color;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -15,8 +14,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -33,33 +30,6 @@ public class RegisterAccount extends javax.swing.JFrame {
     public RegisterAccount() {
         initComponents();
         Connection.createConnection();
-    }
-     public String getLbMessage() {
-        return lbMessage.getText();
-    }
-    
-    public Color getLbMessageColor(){
-        return lbMessage.getForeground();
-    }
-
-    public void setTfPassword(String tfPassword) {
-        this.tfPassword.setText(tfPassword);
-    }
-
-    public void setTfUsername(String tfUsername) {
-        this.tfUsername.setText(tfUsername);;
-    }
-
-    public JPasswordField getTfConfirmPassword() {
-        return tfConfirmPassword;
-    }
-
-    public void setTfConfirmPassword(String tfConfirmPassword) {
-        this.tfConfirmPassword.setText(tfConfirmPassword);
-    }
-
-    public JButton getjButton1() {
-        return jButton1;
     }
 
     /**
@@ -219,7 +189,7 @@ public class RegisterAccount extends javax.swing.JFrame {
         } else if (!checkValidPassword()) {
             lbMessage.setText("<html> Password has least one number, one lowercase characters, one uppercase characters  and a special character such as (!,#,$,^,&,..) and at least 8 characters </html>");
         } else if (!checkValidUsername()) {
-              lbMessage.setText("Username can not be special characters");
+            lbMessage.setText("Username can not be special characters");
         }
         else {
             try {
@@ -267,6 +237,8 @@ public class RegisterAccount extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegisterAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

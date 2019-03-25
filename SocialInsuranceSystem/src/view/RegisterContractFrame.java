@@ -5,19 +5,37 @@
  */
 package view;
 
+import dao.Connection;
+import dao.HometownDAO;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import model.Account;
+import model.Customer;
+import model.Hometown;
+
 /**
  *
  * @author nttungg
  */
 public class RegisterContractFrame extends javax.swing.JFrame {
-
+    private Account account;
     /**
      * Creates new form RegisterContractFrame
      */
     public RegisterContractFrame() {
         initComponents();
+         Connection.createConnection();
     }
 
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,12 +52,11 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cbDay = new javax.swing.JComboBox<>();
         cbMonth = new javax.swing.JComboBox<>();
-        cdYear = new javax.swing.JComboBox<>();
+        cbYear = new javax.swing.JComboBox<>();
         cbCities = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tfSalary = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         tfSINumber = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -50,7 +67,6 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         cbPaymentDuration = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         tfIDNumber = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         lbMessage = new javax.swing.JLabel();
@@ -72,7 +88,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
         cbMonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
 
-        cdYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", " " }));
+        cbYear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", " " }));
 
         cbCities.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cao Bằng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Tĩnh", "Hải Dương", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Cần Thơ", "Đà Nẵng", "Hải Phòng", "Hà Nội", "TP HCM", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "Phú Yên" }));
 
@@ -105,8 +121,6 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         jLabel11.setText("Register Contract");
 
         cbPaymentDuration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "Year", " " }));
-
-        jLabel5.setText("Salary :");
 
         jLabel12.setText("Message :");
 
@@ -153,12 +167,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cdYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cbCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(57, 57, 57)
@@ -190,18 +199,16 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cdYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,7 +244,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private boolean checkEmptyBlank() {
         if (tfName.getText().equals("") || tfEmail.getText().equals("") 
                 || tfIDNumber.getText().equals("") || tfSINumber.getText().equals("")
-                || tfSalary.getText().equals("") || tfPhoneNumber.getText().equals("")) return false;
+                || tfPhoneNumber.getText().equals("")) return false;
         return true;
     }
     
@@ -261,6 +268,18 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         return true;
     }
     
+    private boolean checkSocialNumber() {
+        for(int i=0; i < tfSINumber.getText().length(); i++) {
+            if (tfSINumber.getText().charAt(i) > '9' || tfSINumber.getText().charAt(i) <'0') {
+                return false;
+            }
+        } 
+        if (tfSINumber.getText().length() != 10) return false;
+        int code = cbCities.getSelectedIndex();
+        if (Integer.parseInt(tfSINumber.getText().substring(0, 2)) != (code+10)) return false;
+        return true;
+    }
+    
     private boolean checkName() {
         boolean isCharacter = true;
         for(int i=0; i < tfName.getText().length(); i++) {
@@ -276,6 +295,16 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         return isCharacter;
     }
     
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
+    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean checkEmail(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(emailStr);
+        return matcher.find();
+    }
+    
+   
+    
     private void tfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfEmailActionPerformed
@@ -289,10 +318,26 @@ public class RegisterContractFrame extends javax.swing.JFrame {
              lbMessage.setText("Name is wrong format");
         } else if (!checkPhoneNumber()){
              lbMessage.setText("Phone Number is wrong format");
-        }else {
-             lbMessage.setText("Regiter Successed");
+        } else if (!checkSocialNumber()) {
+             lbMessage.setText("Social number is wrong format");      
+        } else if(!checkEmail(tfEmail.getText())){
+            lbMessage.setText("Email is wrong format");      
+        } else {
+            ArrayList<Hometown> mCitys = HometownDAO.selectAllHometown();
+            Hometown city = mCitys.get(cbCities.getSelectedIndex());
+            boolean gender; 
+            if (cbGender.getSelectedIndex() == 0) gender = true;
+            else gender = false;
+            String dob = cbDay.getSelectedItem().toString() + "/" + cbMonth.getSelectedItem().toString() + "/" + cbYear.getSelectedItem().toString();
+            Customer cus = new Customer(this.getAccount(),null,null,city,tfName.getText(),gender,
+                    dob,tfIDNumber.getText(), tfSINumber.getText(), tfEmail.getText(), tfPhoneNumber.getText(), cbPaymentDuration.getSelectedIndex(), null, 0);
+            lbMessage.setText("Regiter Successed");
+            
+            ContractOptionFrame contractOptionFrame = new ContractOptionFrame();
+            contractOptionFrame.setCustomer(cus);
+            contractOptionFrame.setVisible(true);
+            this.setVisible(false);
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -322,6 +367,8 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -337,7 +384,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbGender;
     private javax.swing.JComboBox<String> cbMonth;
     private javax.swing.JComboBox<String> cbPaymentDuration;
-    private javax.swing.JComboBox<String> cdYear;
+    private javax.swing.JComboBox<String> cbYear;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -346,7 +393,6 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -359,6 +405,5 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPhoneNumber;
     private javax.swing.JTextField tfSINumber;
-    private javax.swing.JTextField tfSalary;
     // End of variables declaration//GEN-END:variables
 }

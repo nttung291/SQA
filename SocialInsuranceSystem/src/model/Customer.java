@@ -23,6 +23,22 @@ public class Customer implements Serializable{
     public Customer() {
     }
     
-    
+     public Customer(Account account, CompulsoryContract compulsoryContract, VoluntaryContract voluntaryContract, Hometown hometown, String name, boolean sex, String dob, String idNumber, String socialInsuranceNo, String email, String phoneNo, int paymentDuration, String taxCode, float salary) {
+        this.account = account;
+        this.compulsoryContract = compulsoryContract;
+        this.voluntaryContract = voluntaryContract;
+        this.hometown = hometown;
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.dob = dob;
+        this.idNumber = idNumber;
+        this.socialInsuranceNo = socialInsuranceNo;
+        this.email = email;
+        this.phoneNo = phoneNo;
+        this.paymentDuration = paymentDuration;
+        this.taxCode = taxCode;
+        this.salary = salary;
+    }
 
 }

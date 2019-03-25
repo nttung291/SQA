@@ -7,12 +7,9 @@ package view;
 
 import controller.AccountCtr;
 import dao.Connection;
-import java.awt.Color;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -29,25 +26,7 @@ public class LoginFrame extends javax.swing.JFrame {
         initComponents();
         Connection.createConnection();
     }
-    
-    public String getLbMessage() {
-        return lbMessage.getText();
-    }
-    
-    public Color getLbMessageColor(){
-        return lbMessage.getForeground();
-    }
 
-    public void setTfPassword(String tfPassword) {
-        this.tfPassword.setText(tfPassword);
-    }
-
-    public void setTfUsername(String tfUsername) {
-        this.tfUsername.setText(tfUsername);
-    }
-    public JButton getLoginButton() {
-        return btLogin;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,14 +132,17 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tfUsernameActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
-         if (!checkEmptyBlank()) {
+        if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
         } else {
             try {
-                int result = AccountCtr.loginAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()));
+                 int result = AccountCtr.loginAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()));
                  if (result == 0) {
                      lbMessage.setText("Login Successed");
-                     new CustomerMain().setVisible(true);
+                     Account acc = AccountCtr.getAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()));
+                     CustomerMain customerMain = new CustomerMain();
+                     customerMain.setAcc(acc);
+                     customerMain.setVisible(true);
                      this.setVisible(false);
                  
                  } else if (result == 1) {
@@ -208,6 +190,8 @@ public class LoginFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         
