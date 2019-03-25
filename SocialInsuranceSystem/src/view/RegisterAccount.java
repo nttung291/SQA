@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package socialinsurancesystem;
+package view;
 
 import controller.AccountCtr;
 import dao.Connection;
+import java.awt.Color;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -14,6 +15,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -30,6 +33,33 @@ public class RegisterAccount extends javax.swing.JFrame {
     public RegisterAccount() {
         initComponents();
         Connection.createConnection();
+    }
+     public String getLbMessage() {
+        return lbMessage.getText();
+    }
+    
+    public Color getLbMessageColor(){
+        return lbMessage.getForeground();
+    }
+
+    public void setTfPassword(String tfPassword) {
+        this.tfPassword.setText(tfPassword);
+    }
+
+    public void setTfUsername(String tfUsername) {
+        this.tfUsername.setText(tfUsername);;
+    }
+
+    public JPasswordField getTfConfirmPassword() {
+        return tfConfirmPassword;
+    }
+
+    public void setTfConfirmPassword(String tfConfirmPassword) {
+        this.tfConfirmPassword.setText(tfConfirmPassword);
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
     }
 
     /**

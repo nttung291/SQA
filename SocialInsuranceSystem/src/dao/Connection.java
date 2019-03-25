@@ -18,13 +18,25 @@ public class Connection {
     protected static java.sql.Connection connection;
 
     public static void createConnection(){
+//        if(connection == null){
+//            
+//            String dbUrl = "jdbc:mysql://localhost:8889/SQA";
+//            String dbClass = "com.mysql.jdbc.Driver";
+//
+//            try {
+//                Class.forName(dbClass);
+//                connection = DriverManager.getConnection (dbUrl, "root", "root");
+//            }catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         if(connection == null){
-            String dbUrl = "jdbc:mysql://localhost:8889/SQA";
+            String dbUrl = "jdbc:mysql://localhost:3306/SocialInsuranceDB";
             String dbClass = "com.mysql.jdbc.Driver";
 
             try {
                 Class.forName(dbClass);
-                connection = DriverManager.getConnection (dbUrl, "root", "root");
+                connection = DriverManager.getConnection (dbUrl, "root", "");
             }catch(Exception e) {
                 e.printStackTrace();
             }
