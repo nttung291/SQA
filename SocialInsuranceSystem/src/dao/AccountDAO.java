@@ -78,6 +78,19 @@ public class AccountDAO extends Connection{
         return -1;
     }
     
+    public static int deleteAllAccounts() {
+        String sql = "DELETE FROM Account";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.execute();
+            
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
     public static Account selectAccountByID(int id){
         Account result;
         String sql = "SELECT * FROM Account WHERE id = ?";

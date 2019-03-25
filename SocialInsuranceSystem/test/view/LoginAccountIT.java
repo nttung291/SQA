@@ -18,7 +18,7 @@ import org.junit.runners.MethodSorters;
 
 /**
  *
- * @author habui
+ * @author thinhnd
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class LoginAccountIT {

@@ -91,6 +91,10 @@ public class JTableModel extends JFrame{
     setSize(1000, 700);
     setVisible(true);
   }
+    
+    public DefaultTableModel getDm() {
+        return this.dm;
+    }
 }
 /**
  * @version 1.0 11/09/98
