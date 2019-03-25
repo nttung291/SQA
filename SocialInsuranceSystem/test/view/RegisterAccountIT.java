@@ -101,6 +101,8 @@ public class RegisterAccountIT {
     public void testCase7_IncorrectPasswordInput(){
         RegisterAccount rA_View=new RegisterAccount();
         rA_View.setTfPassword("Test1234");
+        JButton button = rA_View.getjButton1();
+        
         String msg=rA_View.getLbMessage();
         assertEquals(msg, "This password field must contain at least one number, special character such as (!,#,$,^,&,..) and not enough at least 8 characters, please check your input again");
         Color color = rA_View.getLbMessageColor();

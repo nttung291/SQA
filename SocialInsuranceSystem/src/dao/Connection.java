@@ -36,7 +36,7 @@ public class Connection {
 
             try {
                 Class.forName(dbClass);
-                connection = DriverManager.getConnection (dbUrl, "root", "");
+                connection = DriverManager.getConnection (dbUrl, "root", "root");
             }catch(Exception e) {
                 e.printStackTrace();
             }
