@@ -8,6 +8,7 @@ package dao;
 import static dao.Connection.connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import model.CompulsoryContract;
 
@@ -41,12 +42,23 @@ public class CompulsoryContractDAO {
     public static int insertCompulsoryContract(CompulsoryContract contract){
         String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description) VALUES (?,?,?)";
         try{
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = null;
+            
             ps.setString(1, contract.companyCode);
             ps.setInt(2, contract.state);
             ps.setString(3, contract.description);
             int rowCount=ps.executeUpdate();
-            return rowCount;
+            int candidateId = 0;
+            if(rowCount == 1)
+            {
+                // get candidate id
+                rs = ps.getGeneratedKeys();
+                if(rs.next())
+                    candidateId = rs.getInt(1);
+ 
+            }
+            return candidateId;
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -74,5 +86,34 @@ public class CompulsoryContractDAO {
             e.printStackTrace();
         }    
         return null;
+    }
+    
+      public static int updateCompulsoryContract(CompulsoryContract compulsoryContract){
+        String sql = "UPDATE CompulsoryContract SET CompanyCode=?,State=?,Description=? WHERE id=?";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(4, compulsoryContract.id);
+            ps.setString(1, compulsoryContract.companyCode);
+            ps.setInt(2, compulsoryContract.state);
+            ps.setString(3, compulsoryContract.description);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+      
+     public static int deleteCompulsoryContractByID(CompulsoryContract compulsoryContract) {
+        String sql = "DELETE FROM CompulsoryContract Where Id = ?";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, compulsoryContract.id);
+            ps.execute();
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

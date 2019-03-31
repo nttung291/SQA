@@ -6,6 +6,7 @@
 package view;
 
 import dao.CompulsoryContractDAO;
+import dao.Connection;
 import dao.CustomerDAO;
 import dao.VoluntaryContractDAO;
 import java.util.Vector;
@@ -55,6 +56,7 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
      */
     public ConfirmVoluntaryFrame() {
         initComponents();
+         Connection.createConnection();
     }
     
     public void initData() {
@@ -190,7 +192,8 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
         int row = VoluntaryContractDAO.insertVoluntaryContract(customer.voluntaryContract);
         int result = 0;
         if (row != -1 && row !=0) {
-            VoluntaryContract inseredContract = VoluntaryContractDAO.selectVoluntaryContractByID(row);
+            VoluntaryContract inseredContract = customer.voluntaryContract;
+            inseredContract.id = row;
             Customer inCustomer = this.getCustomer();
             inCustomer.voluntaryContract = inseredContract;
             result = CustomerDAO.inserVoluntaryCustomer(inCustomer);

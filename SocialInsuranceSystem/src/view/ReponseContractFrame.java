@@ -6,20 +6,25 @@
 package view;
 
 import dao.CompulsoryContractDAO;
-import dao.Connection;
 import dao.CustomerDAO;
+import dao.VoluntaryContractDAO;
 import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.CompulsoryContract;
 import model.Customer;
+import model.VoluntaryContract;
 
 /**
  *
  * @author nttungg
  */
-public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
+public class ReponseContractFrame extends javax.swing.JFrame implements ReponseContractForm.ResponseContractListener{
     private Customer customer;
+    private boolean isAccepted;
+     private RemoveRowListener listener;
 
     public Customer getCustomer() {
         return customer;
@@ -28,6 +33,12 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public void setListener(RemoveRowListener listener) {
+        this.listener = listener;
+    }
+
+    
     
     private void initTableData() {
         DefaultTableModel dm = (DefaultTableModel) tb_customer.getModel();
@@ -42,10 +53,15 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
         row.add(customer.phoneNo);
         row.add(customer.hometown.name);
         row.add(customer.taxCode);
-        row.add(customer.compulsoryContract.companyCode);
+        if (customer.compulsoryContract != null) {
+            row.add(customer.compulsoryContract.companyCode);
+        } else {
+              row.add("No Company Code");
+        }
         row.add(customer.salary);
         if (customer.paymentDuration == 0) row.add("Month");
         else row.add("Year");
+        row.add(String.valueOf((customer.salary * 25.5/100)));
         dm.insertRow(0,row);
         tb_customer.setModel(dm);
     }
@@ -53,17 +69,17 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
     /**
      * Creates new form ConfirmCompulsoryFrame
      */
-    public ConfirmCompulsoryFrame() {
+    public ReponseContractFrame() {
         initComponents();
-        Connection.createConnection();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     public void initData() {
       if (this.getCustomer() != null) {
-        lb_cost.setText(String.valueOf(customer.salary * 8/100));
         initTableData();
       }
     }
+    
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,35 +95,36 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_customer = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lb_cost = new javax.swing.JLabel();
-        lbMessage = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Confirm");
+        jButton1.setText("Accept");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Decline");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         tb_customer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Company Code", "Salary", "Insurance Duration"
+                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Company Code", "Salary", "Insurance Duration", "Cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -118,15 +135,6 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Confirm Contract");
-
-        jLabel2.setText("Cost of insurance :");
-
-        lb_cost.setText("0");
-
-        lbMessage.setText("No message");
-        lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel5.setText("Message:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,19 +153,7 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(344, 344, 344)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(30, 30, 30)
-                        .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lb_cost, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,17 +162,7 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(96, 96, 96)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lb_cost))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -187,20 +173,20 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        int row = CompulsoryContractDAO.insertCompulsoryContract(customer.compulsoryContract);
-        int result = 0;
-        if (row != -1 && row !=0) {
-            CompulsoryContract inseredContract = customer.compulsoryContract;
-            inseredContract.id = row;
-            Customer inCustomer = this.getCustomer();
-            inCustomer.compulsoryContract = inseredContract;
-            result = CustomerDAO.inserCompulsoryCustomer(inCustomer);
-        }
-        if (result != 0 && result != -1) {
-             lbMessage.setText("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
-        } 
+       ReponseContractForm reponseContractForm = new ReponseContractForm();
+       reponseContractForm.setListener(this);
+       reponseContractForm.setLabelButton("Accept");
+       reponseContractForm.setVisible(true);
+       isAccepted = true;
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       ReponseContractForm reponseContractForm = new ReponseContractForm();
+       reponseContractForm.setListener(this);
+       reponseContractForm.setLabelButton("Decline");
+       reponseContractForm.setVisible(true);
+       isAccepted = false;
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,20 +205,23 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfirmCompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReponseContractFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfirmCompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReponseContractFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfirmCompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReponseContractFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfirmCompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReponseContractFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConfirmCompulsoryFrame().setVisible(true);
+                new ReponseContractFrame().setVisible(true);
             }
         });
     }
@@ -241,11 +230,67 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbMessage;
-    private javax.swing.JLabel lb_cost;
     private javax.swing.JTable tb_customer;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onClicked() {
+        int row = -1;
+        if (isAccepted) {
+            if (customer.compulsoryContract != null) {
+                CompulsoryContract compulsoryContract = customer.compulsoryContract;
+                compulsoryContract.state = 1;
+                row = CompulsoryContractDAO.updateCompulsoryContract(compulsoryContract);
+            } else if (customer.voluntaryContract != null) {
+                VoluntaryContract voluntaryContract = customer.voluntaryContract;
+                voluntaryContract.state = 1;
+                row = VoluntaryContractDAO.updateVoluntaryContract(voluntaryContract);
+            }
+            if (row != 0 && row != -1) {
+        
+                int result = JOptionPane.showConfirmDialog(null, "Finished!", "Message", JOptionPane.PLAIN_MESSAGE);
+                
+                this.listener.onRemove();
+                if (result == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+                }
+            }
+        } else {
+             if (customer.compulsoryContract != null) {
+                CompulsoryContract compulsoryContract = customer.compulsoryContract;
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCon = 0;
+                if (deleteCus == 1){
+                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract);
+                }
+                if (deleteCon == 1) {
+                    row = 1;
+                }
+            } else if (customer.voluntaryContract != null) {
+                VoluntaryContract voluntaryContract = customer.voluntaryContract;
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCon = 0;
+                if (deleteCus == 1){
+                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract);
+                }
+                if (deleteCus == 1) {
+                    row = 1;
+                }
+            }
+            if (row != 0 && row != -1) {
+        
+                int result = JOptionPane.showConfirmDialog(null, "Finished!", "Message", JOptionPane.PLAIN_MESSAGE);
+                
+                this.listener.onRemove();
+                if (result == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+                }
+            }
+        }
+    }
+    
+    public interface RemoveRowListener {
+      public void onRemove();
+    }
 }

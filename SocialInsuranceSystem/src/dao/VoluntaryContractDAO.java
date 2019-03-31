@@ -8,6 +8,7 @@ package dao;
 import static dao.Connection.connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import model.VoluntaryContract;
 
@@ -39,17 +40,28 @@ public class VoluntaryContractDAO {
     public static int insertVoluntaryContract(VoluntaryContract contract){
         String sql = "INSERT INTO VoluntaryContract(state,Description) VALUES (?,?)";
         try{
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ResultSet rs = null;
             ps.setInt(1, contract.state);
             ps.setString(2, contract.description);
             int rowCount=ps.executeUpdate();
-            return rowCount;
+            int candidateId = 0;
+            if(rowCount == 1)
+            {
+                // get candidate id
+                rs = ps.getGeneratedKeys();
+                if(rs.next())
+                    candidateId = rs.getInt(1);
+ 
+            }
+            return candidateId;
         }catch(Exception e){
             e.printStackTrace();
         }
         return -1;
     }
-      public static VoluntaryContract selectVoluntaryContractByID(int id){
+    
+    public static VoluntaryContract selectVoluntaryContractByID(int id){
         VoluntaryContract result;
         String sql = "SELECT * FROM VoluntaryContract WHERE id = ?";
         try{
@@ -69,5 +81,33 @@ public class VoluntaryContractDAO {
             e.printStackTrace();
         }    
         return null;
+    }
+    
+    public static int updateVoluntaryContract(VoluntaryContract voluntaryContract){
+        String sql = "UPDATE VoluntaryContract SET State=?,Description=? WHERE id=?";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(3, voluntaryContract.id);
+            ps.setInt(1, voluntaryContract.state);
+            ps.setString(2, voluntaryContract.description);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+      public static int deleteVoluntaryContractByID(VoluntaryContract voluntaryContract) {
+        String sql = "DELETE FROM VoluntaryContract WHERE id = ?";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, voluntaryContract.id);
+            ps.execute();
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 }

@@ -275,8 +275,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
             }
         } 
         if (tfSINumber.getText().length() != 10) return false;
-        int code = cbCities.getSelectedIndex();
-        if (Integer.parseInt(tfSINumber.getText().substring(0, 2)) != (code+10)) return false;
+        if (Integer.parseInt(tfSINumber.getText().substring(0, 2)) < 10 || Integer.parseInt(tfSINumber.getText().substring(0, 2)) > 72) return false;
         return true;
     }
     

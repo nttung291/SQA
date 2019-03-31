@@ -6,6 +6,7 @@
 package view;
 
 import controller.AccountCtr;
+import dao.AccountDAO;
 import dao.Connection;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -179,7 +180,11 @@ class ButtonEditor extends DefaultCellEditor {
         
         if (result == JOptionPane.OK_OPTION) {
             if (label == "Decline") {
-                
+                int deleteresult =  AccountDAO.deleteAllAccountByID(selectedAccount);
+                 if (deleteresult == 1) {
+                    defaultTableModel.removeRow(affectedRow);
+                    affectedRow = -1;
+                }
             } else if ( label == "Accept") {
                 selectedAccount.state = 1;
                 int updateresult =  AccountCtr.updateAccount(selectedAccount);
@@ -187,7 +192,7 @@ class ButtonEditor extends DefaultCellEditor {
                     defaultTableModel.removeRow(affectedRow);
                     affectedRow = -1;
                 }
-               
+              
             }
         } else {
             System.out.println("User canceled / closed the dialog, result = " + result);

@@ -155,4 +155,17 @@ public class CustomerDAO {
         }
         return -1;
     }
+    
+      public static int deleteCustomerByID(Customer customer) {
+        String sql = "DELETE FROM Customer Where Id = ?";
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, customer.id);
+            ps.execute();
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }

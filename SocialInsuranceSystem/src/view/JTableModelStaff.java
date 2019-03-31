@@ -1,0 +1,277 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package view;
+
+import controller.AccountCtr;
+import dao.CompulsoryContractDAO;
+import dao.Connection;
+import dao.CustomerDAO;
+import dao.VoluntaryContractDAO;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import model.Account;
+import model.CompulsoryContract;
+import model.Customer;
+import model.VoluntaryContract;
+import utils.EncodeDecode;
+
+
+/**
+ *
+ * @author nttungg
+ */
+public class JTableModelStaff extends JFrame{
+    private DefaultTableModel dm;
+    ArrayList<CompulsoryContract> compulsoryContracts;
+    ArrayList<VoluntaryContract> voluntaryContracts;
+    ArrayList<Customer> customers; 
+    ArrayList<Customer> addedCustomers = new ArrayList<>();
+    int requestNumber = 0;
+    Vector values = new Vector();
+            
+    public JTableModelStaff() {
+        super("JButtonTable");
+        Connection.createConnection();
+        compulsoryContracts =  CompulsoryContractDAO.selectAllCompulsoryContract();
+        voluntaryContracts = VoluntaryContractDAO.selectAllVoluntaryContract();
+        customers = CustomerDAO.selectAllCustomer();
+        
+        dm = new DefaultTableModel();
+        Vector column = new Vector();
+        column.add("Request Number");
+        column.add("Name");
+        column.add("State");
+        column.add("Payment Duration");
+        column.add("Type Of Insurance");
+        column.add("Cost");
+        column.add("See Detail");
+        
+        insertContract();
+        
+        dm.setDataVector(values, column);
+
+        JTable table = new JTable(dm);
+        table.getColumn("See Detail").setCellRenderer(new ButtonStaffRenderer());
+        table.getColumn("See Detail").setCellEditor(
+            new ButtonStaffEditor(new JCheckBox(),dm, addedCustomers));
+        JScrollPane scroll = new JScrollPane(table);
+        getContentPane().add(scroll);
+        setSize(1000, 700);
+    }
+    
+    private void insertContract() {
+        for (int i=0;i<compulsoryContracts.size();i++) {
+            if (compulsoryContracts.get(i).state == 0) {
+                for (int j=0;j<customers.size();j++) {
+                    if (customers.get(j).compulsoryContract != null) {
+                        if (customers.get(j).compulsoryContract.id == compulsoryContracts.get(i).id) {
+                            requestNumber = requestNumber+1;
+                            Integer id = requestNumber;
+                            String name = customers.get(j).name;
+                            Integer state = 0;
+                            String paymentDuration;
+                            if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
+                            else paymentDuration = "Year";
+                            String type = "Compulsory";
+                            String cost = String.valueOf((customers.get(j).salary * 25.5/100));
+                            Vector row = new Vector();
+                            row.add(id);
+                            row.add(name);
+                            row.add(state);
+                            row.add(paymentDuration);
+                            row.add(type);
+                            row.add(cost);
+                            row.add("See Detail");
+                            values.add(row);
+                            addedCustomers.add(customers.get(j));
+                        }
+                    }
+                }
+            }
+        }
+        
+        for (int i=0;i<voluntaryContracts.size();i++) {
+            if (voluntaryContracts.get(i).state == 0) {
+                VoluntaryContract voluntaryContract = voluntaryContracts.get(i);
+                for (int j=0;j<customers.size();j++) {
+                    if (customers.get(j).voluntaryContract != null) {
+                        if (customers.get(j).voluntaryContract.id == voluntaryContract.id) {
+                            requestNumber = requestNumber+1;
+                            Integer id = requestNumber;
+                            String name = customers.get(j).name;
+                            Integer state = 0;
+                            String paymentDuration;
+                            if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
+                            else paymentDuration = "Year";
+                            String type = "Voluntary";
+                            String cost = String.valueOf((customers.get(j).salary * 22/100));
+                            Vector row = new Vector();
+                            row.add(id);
+                            row.add(name);
+                            row.add(state);
+                            row.add(paymentDuration);
+                            row.add(type);
+                            row.add(cost);
+                            row.add("See Detail");
+                            values.add(row);
+                            addedCustomers.add(customers.get(j));
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JTableModelStaff().setVisible(true);
+            }
+        });
+    }
+     
+    public DefaultTableModel getDm() {
+        return this.dm;
+    }
+}
+/**
+ * @version 1.0 11/09/98
+ */
+
+class ButtonStaffRenderer extends JButton implements TableCellRenderer {
+
+  public ButtonStaffRenderer() {
+    setOpaque(true);
+  }
+
+  public Component getTableCellRendererComponent(JTable table, Object value,
+      boolean isSelected, boolean hasFocus, int row, int column) {
+    if (isSelected) {
+      setForeground(table.getSelectionForeground());
+      setBackground(table.getSelectionBackground());
+    } else {
+      setForeground(table.getForeground());
+      setBackground(UIManager.getColor("Button.background"));
+    }
+    setText((value == null) ? "" : value.toString());
+    return this;
+  }
+}
+
+/**
+ * @version 1.0 11/09/98
+ */
+
+class ButtonStaffEditor extends DefaultCellEditor implements ReponseContractFrame.RemoveRowListener {
+  protected JButton button;
+
+  private String label;
+  private DefaultTableModel defaultTableModel; 
+  private ArrayList<Customer> customers;
+  private Account selectedAccount;
+  private int affectedRow = -1;
+  private boolean isPushed;
+
+  public ButtonStaffEditor(JCheckBox checkBox, DefaultTableModel dm,  ArrayList<Customer> addedCustomers ) {
+    super(checkBox);
+    defaultTableModel = dm;
+    customers = addedCustomers;
+    button = new JButton();
+    button.setOpaque(true);
+    button.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        fireEditingStopped();
+      }
+    });
+  }
+
+  public Component getTableCellEditorComponent(JTable table, Object value,
+      boolean isSelected, int row, int column) {
+    if (isSelected) {
+      button.setForeground(table.getSelectionForeground());
+      button.setBackground(table.getSelectionBackground());
+    } else {
+      button.setForeground(table.getForeground());
+      button.setBackground(table.getBackground());
+    }
+    affectedRow = row;
+    isPushed = true;
+    return button;
+  }
+
+  public Object getCellEditorValue() {
+    if (isPushed) {
+           ReponseContractFrame reponseFrame = new ReponseContractFrame();
+           reponseFrame.setCustomer(customers.get(affectedRow));
+           reponseFrame.setListener(this);
+           reponseFrame.initData();
+           reponseFrame.setVisible(true);
+    }
+    isPushed = false;
+    return "See Detail";
+  }
+
+  public boolean stopCellEditing() {
+    isPushed = false;
+    return super.stopCellEditing();
+  }
+
+  protected void fireEditingStopped() {
+    super.fireEditingStopped();
+  }
+
+    @Override
+    public void onRemove() {
+        defaultTableModel.removeRow(affectedRow);
+        affectedRow = -1;
+    }
+}
+
