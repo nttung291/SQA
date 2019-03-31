@@ -49,7 +49,7 @@ public class VoluntaryContractDAO {
         }
         return -1;
     }
-      public static VoluntaryContract selectCompulsoryContractByID(int id){
+      public static VoluntaryContract selectVoluntaryContractByID(int id){
         VoluntaryContract result;
         String sql = "SELECT * FROM VoluntaryContract WHERE id = ?";
         try{

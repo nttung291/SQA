@@ -5,7 +5,10 @@
  */
 package view;
 
+import dao.CustomerDAO;
+import java.util.ArrayList;
 import model.Account;
+import model.Customer;
 
 /**
  *
@@ -28,8 +31,21 @@ public class CustomerMain extends javax.swing.JFrame {
         this.acc = acc;
     }
     
+    public boolean checkCustomerExisted() {
+        ArrayList<Customer> customers = CustomerDAO.selectAllCustomer();
+        if (customers.size() != 0) {
+             for (int i=0;i<customers.size();i++) {
+                 if (customers.get(i).account.id == this.acc.id) {
+                     jButton1.setEnabled(false);
+                     return false;
+                 }
+             }
+        } else{
+            return true;
+        }
+        return true;
+    }
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,10 +110,12 @@ public class CustomerMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        RegisterContractFrame registerContractFrame = new RegisterContractFrame();
-        registerContractFrame.setAccount(this.getAcc());
-        registerContractFrame.setVisible(true);
-        this.setVisible(false);
+        if (checkCustomerExisted()) {
+            RegisterContractFrame registerContractFrame = new RegisterContractFrame();
+            registerContractFrame.setAccount(this.getAcc());
+            registerContractFrame.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -129,9 +147,10 @@ public class CustomerMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        CustomerMain customerMain = new CustomerMain();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerMain().setVisible(true);
+                customerMain.setVisible(true);
             }
         });
     }

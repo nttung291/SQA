@@ -9,16 +9,18 @@ import dao.CompulsoryContractDAO;
 import dao.Connection;
 import dao.CustomerDAO;
 import dao.HometownDAO;
+import dao.VoluntaryContractDAO;
 import java.util.ArrayList;
 import model.CompulsoryContract;
 import model.Customer;
 import model.Hometown;
+import model.VoluntaryContract;
 
 /**
  *
  * @author nttungg
  */
-public class CompulsoryFrame extends javax.swing.JFrame {
+public class VoluntaryFrame extends javax.swing.JFrame {
     private Customer customer;
 
     public Customer getCustomer() {
@@ -31,7 +33,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     /**
      * Creates new form CompulsoryFrame
      */
-    public CompulsoryFrame() {
+    public VoluntaryFrame() {
         initComponents();
         Connection.createConnection();
     }
@@ -46,22 +48,17 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tfTax = new javax.swing.JTextField();
-        tfCompany = new javax.swing.JTextField();
         tfSalary = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lbMessage = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Tax code :");
-
-        jLabel2.setText("Company code :");
 
         jLabel3.setText("Salary :");
 
@@ -73,14 +70,12 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         });
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel4.setText("Compulsory Social Insurance");
+        jLabel4.setText("Voluntary Social Insurance");
 
         jLabel5.setText("Message:");
 
         lbMessage.setText("No message");
         lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jButton2.setText("Cancel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,27 +86,27 @@ public class CompulsoryFrame extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfSalary, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                            .addComponent(tfCompany)
-                            .addComponent(tfTax)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(282, 282, 282)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(74, 74, 74)
-                                .addComponent(jButton2))
-                            .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(tfTax, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,24 +118,18 @@ public class CompulsoryFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfTax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGap(58, 58, 58)
+                .addComponent(jButton1)
                 .addGap(30, 30, 30))
         );
 
@@ -152,27 +141,25 @@ public class CompulsoryFrame extends javax.swing.JFrame {
             lbMessage.setText("Informations can not be blank");
         } else if (!checkTaxNumber()) {
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
-        } else if(!checkCompany()){
-            lbMessage.setText("Company code must equal 10 integer numbers from 010000000 to 949999999, please check your input again");
         } else if (!checkSalary()) {
             
         } else {
-            CompulsoryContract compulsoryContract = new CompulsoryContract(tfCompany.getText(),0, "No description");
+            VoluntaryContract voluntaryContract = new VoluntaryContract(0, "No description");
             Customer insCustomer = this.getCustomer();
             insCustomer.salary = Float.parseFloat(tfSalary.getText());
-            insCustomer.compulsoryContract = compulsoryContract;
+            insCustomer.voluntaryContract = voluntaryContract;
             insCustomer.taxCode = tfTax.getText();
             
-            ConfirmCompulsoryFrame confirmCompulsoryFrame = new ConfirmCompulsoryFrame();
-            confirmCompulsoryFrame.setCustomer(insCustomer);
-            confirmCompulsoryFrame.initData();
-            confirmCompulsoryFrame.setVisible(true);
+            ConfirmVoluntaryFrame confirmVoluntaryFrame = new ConfirmVoluntaryFrame();
+            confirmVoluntaryFrame.setCustomer(insCustomer);
+            confirmVoluntaryFrame.initData();
+            confirmVoluntaryFrame.setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private boolean checkEmptyBlank() {
-        if (tfTax.getText().equals("") || tfSalary.getText().equals("") || tfCompany.getText().equals("")) return false;
+        if (tfTax.getText().equals("") || tfSalary.getText().equals("")) return false;
         return true;
     }
     
@@ -188,17 +175,6 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         return true;
     }
     
-     private boolean checkCompany() {
-        for(int i=0; i < tfCompany.getText().length(); i++) {
-            if (tfCompany.getText().charAt(i) > '9' || tfCompany.getText().charAt(i) <'0') {
-                return false;
-            }
-        } 
-        if (tfCompany.getText().length() != 10) return false;
-        if (Integer.parseInt(tfCompany.getText().substring(0, 2)) != (this.getCustomer().hometown.ID)) return false;
-        return true;
-    }
-    
      private boolean checkSalary() {
         Hometown hometown = this.getCustomer().hometown;
         Float salary;
@@ -209,20 +185,8 @@ public class CompulsoryFrame extends javax.swing.JFrame {
             return false;
         }
        
-        if (hometown.section == 1 && (salary < 4472600 || salary > 29800000)){
-            lbMessage.setText("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
-            return false;
-        }
-        if (hometown.section == 2 && (salary < 3969700 || salary > 29800000)) {
-            lbMessage.setText("Salary field must in section 2 range from 3.969.700 dong/month to 29.800.000 dong/month, please check your input again");
-            return false;
-        }
-        if (hometown.section == 3 && (salary < 3477500 || salary > 29800000)) {
-            lbMessage.setText("Salary field must in section 2 range from 3.477.500 dong/month to 29.800.000 dong/month, please check your input again");
-            return false;
-        }
-        if (hometown.section == 4 && (salary < 3124400 || salary > 29800000)) {
-             lbMessage.setText("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
+        if (salary < 700000 || salary > 29800000) {
+            lbMessage.setText("Salary field must range from 700.000 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         return true;
@@ -245,35 +209,34 @@ public class CompulsoryFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VoluntaryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VoluntaryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VoluntaryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CompulsoryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VoluntaryFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CompulsoryFrame().setVisible(true);
+                new VoluntaryFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lbMessage;
-    private javax.swing.JTextField tfCompany;
     private javax.swing.JTextField tfSalary;
     private javax.swing.JTextField tfTax;
     // End of variables declaration//GEN-END:variables

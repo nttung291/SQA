@@ -32,7 +32,7 @@ public class Connection {
 //        }
         if(connection == null){
 //            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
-            String dbUrl = "jdbc:mysql://localhost:3306/SocialInsuranceDB";
+            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
             String dbClass = "com.mysql.jdbc.Driver";
 
             try {

@@ -287,6 +287,8 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                 isCharacter = true;
             } else if (tfName.getText().charAt(i) >= 'A' && tfName.getText().charAt(i) <= 'Z') {
                 isCharacter = true;
+            } else if(tfName.getText().charAt(i) == ' ') {
+                isCharacter = true;
             } else {
                 isCharacter = false;
                 break;

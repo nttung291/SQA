@@ -39,7 +39,7 @@ public class CompulsoryContractDAO {
     }
 
     public static int insertCompulsoryContract(CompulsoryContract contract){
-        String sql = "INSERT INTO CompulsoryContract(companyCode,state,Description) VALUES (?,?,?)";
+        String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description) VALUES (?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, contract.companyCode);

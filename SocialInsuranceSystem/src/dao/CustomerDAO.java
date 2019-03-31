@@ -40,7 +40,7 @@ public class CustomerDAO {
                 customer.taxCode=rs.getString("TaxCode");
                 customer.salary=rs.getFloat("Salary");
                 customer.compulsoryContract=CompulsoryContractDAO.selectCompulsoryContractByID(rs.getInt("CompulsoryContractId"));
-                customer.voluntaryContract=VoluntaryContractDAO.selectCompulsoryContractByID(rs.getInt("VoluntaryContractId"));
+                customer.voluntaryContract=VoluntaryContractDAO.selectVoluntaryContractByID(rs.getInt("VoluntaryContractId"));
                 result.add(customer);
             }
         }catch(Exception e){
@@ -80,8 +80,59 @@ public class CustomerDAO {
     
 
     public static int insertCustomer(Customer customer){
-        String sql = "INSERT INTO Customer(HometownId,AccountId,Name, Sex, Dob,IdNumber,SocialInsuranceNo"
-                + ",Email,PhoneNo,PaymentDuration,TaxCode,Salary,VoluntaryContractId,CompulsoryContractId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Customer(HometownId,VoluntaryContractId, CompulsoryContractId, AccountId,Name, Sex, Dob,IdNumber,SocialInsuranceNo"
+                + ",Email,PhoneNo,PaymentDuration,TaxCode,Salary) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, customer.hometown.ID);
+            ps.setInt(13, customer.voluntaryContract.id);
+            ps.setInt(14, customer.compulsoryContract.id);
+            ps.setInt(2, customer.account.id);
+            ps.setString(3, customer.name);
+            ps.setBoolean(4, customer.sex);
+            ps.setString(5, customer.dob);
+            ps.setString(6, customer.idNumber);
+            ps.setString(7, customer.socialInsuranceNo);
+            ps.setString(8, customer.email);
+            ps.setString(9, customer.phoneNo);
+            ps.setInt(10, customer.paymentDuration);
+            ps.setString(11, customer.taxCode);
+            ps.setFloat(12, customer.salary);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public static int inserCompulsoryCustomer(Customer customer){
+        String sql = "INSERT INTO Customer(HometownId,AccountId,Name, Sex, Dob,IdNumber,SocialInsuranceNo ,Email,PhoneNo,PaymentDuration,TaxCode,Salary,CompulsoryContractId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, customer.hometown.ID);
+            ps.setInt(2, customer.account.id);
+            ps.setString(3, customer.name);
+            ps.setBoolean(4, customer.sex);
+            ps.setString(5, customer.dob);
+            ps.setString(6, customer.idNumber);
+            ps.setString(7, customer.socialInsuranceNo);
+            ps.setString(8, customer.email);
+            ps.setString(9, customer.phoneNo);
+            ps.setInt(10, customer.paymentDuration);
+            ps.setString(11, customer.taxCode);
+            ps.setFloat(12, customer.salary);
+            ps.setInt(13, customer.compulsoryContract.id);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public static int inserVoluntaryCustomer(Customer customer){
+        String sql = "INSERT INTO Customer(HometownId,AccountId,Name, Sex, Dob,IdNumber,SocialInsuranceNo ,Email,PhoneNo,PaymentDuration,TaxCode,Salary,VoluntaryContractId) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, customer.hometown.ID);
@@ -97,7 +148,6 @@ public class CustomerDAO {
             ps.setString(11, customer.taxCode);
             ps.setFloat(12, customer.salary);
             ps.setInt(13, customer.voluntaryContract.id);
-            ps.setInt(14, customer.compulsoryContract.id);
             int rowCount=ps.executeUpdate();
             return rowCount;
         }catch(Exception e){
