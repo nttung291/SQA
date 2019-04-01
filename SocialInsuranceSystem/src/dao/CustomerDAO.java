@@ -49,10 +49,38 @@ public class CustomerDAO {
         return result;
     }
      
-    public static int updateCustomer(Customer customer){
+    public static int updateCompulsoryCustomer(Customer customer){
         String sql = "UPDATE Customer SET HometownId=?,AccountId=?,Name=?,Sex=?,Dob=?,"
                 + "IdNumber=?,SocialInsuranceNo=?,Email=?,PhoneNo=?,PaymentDuration=?,"
-                + "TaxCode=?,Salary=?,VoluntaryContractId=?,CompulsoryContractId=? WHERE id=?" ;
+                + "TaxCode=?,Salary=?,CompulsoryContractId=? WHERE id=?" ;
+        try{  
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, customer.hometown.ID);
+            ps.setInt(2, customer.account.id);
+            ps.setString(3, customer.name);
+            ps.setBoolean(4, customer.sex);
+            ps.setString(5, customer.dob);
+            ps.setString(6,customer.idNumber);
+            ps.setString(7,customer.socialInsuranceNo);
+            ps.setString(8,customer.email);
+            ps.setString(9,customer.phoneNo);
+            ps.setInt(10,customer.paymentDuration);
+            ps.setString(11, customer.taxCode);
+            ps.setFloat(12, customer.salary);
+            ps.setInt(13, customer.compulsoryContract.id);
+            ps.setInt(14, customer.id);
+            ps.executeUpdate();
+            return 1;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    
+     public static int updateVoluntaryCustomer(Customer customer){
+        String sql = "UPDATE Customer SET HometownId=?,AccountId=?,Name=?,Sex=?,Dob=?,"
+                + "IdNumber=?,SocialInsuranceNo=?,Email=?,PhoneNo=?,PaymentDuration=?,"
+                + "TaxCode=?,Salary=?,VoluntaryContractId=? WHERE id=?" ;
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, customer.hometown.ID);
@@ -68,8 +96,7 @@ public class CustomerDAO {
             ps.setString(11, customer.taxCode);
             ps.setFloat(12, customer.salary);
             ps.setInt(13, customer.voluntaryContract.id);
-            ps.setInt(14, customer.compulsoryContract.id);
-            ps.setInt(15, customer.id);
+            ps.setInt(14, customer.id);
             ps.executeUpdate();
             return 1;
         }catch(Exception e){

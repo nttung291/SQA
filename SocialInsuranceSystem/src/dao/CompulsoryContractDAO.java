@@ -41,7 +41,7 @@ public class CompulsoryContractDAO {
     }
 
     public static int insertCompulsoryContract(CompulsoryContract contract){
-        String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description,StartedDate) VALUES (?,?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = null;

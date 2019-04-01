@@ -345,6 +345,27 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             }
         }
     }
+    
+     public void acceptUpdate(int row) {
+        if (customer.compulsoryContract != null) {
+                CompulsoryContract compulsoryContract = customer.compulsoryContract;
+                compulsoryContract.state = 1;
+                row = CompulsoryContractDAO.updateCompulsoryContract(compulsoryContract);
+            } else if (customer.voluntaryContract != null) {
+                VoluntaryContract voluntaryContract = customer.voluntaryContract;
+                voluntaryContract.state = 1;
+                row = VoluntaryContractDAO.updateVoluntaryContract(voluntaryContract);
+            }
+            if (row != 0 && row != -1) {
+        
+                int result = JOptionPane.showConfirmDialog(null, "Finished!", "Message", JOptionPane.PLAIN_MESSAGE);
+                
+                this.listener.onRemove();
+                if (result == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -367,8 +388,8 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         } else if (type == 2) {
             if (isAccepted) acceptCancel(row);
             else declineCancel(row);
-        } else {
-            
+        } else if (type == 3){
+            acceptUpdate(row);
         }
     }
     

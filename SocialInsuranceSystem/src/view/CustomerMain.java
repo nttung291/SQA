@@ -78,6 +78,25 @@ public class CustomerMain extends javax.swing.JFrame {
         return null;
     }
     
+     public Customer getActiveContractCustomer() {
+        Customer customer = getAccountCustomer();
+        if (customer == null){
+            return null;
+        } else {
+            if (customer.compulsoryContract != null) {
+                if (customer.compulsoryContract.state == 1) {
+                    return customer;
+                }
+            } else if (customer.voluntaryContract != null) {
+                 if (customer.voluntaryContract.state == 1) {
+                    return customer;
+                }
+            }
+            else return null;
+        }
+        return null;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -114,7 +133,12 @@ public class CustomerMain extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Cancel Contract");
+        jButton3.setText("Update Contract");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Customer Main");
@@ -175,6 +199,19 @@ public class CustomerMain extends javax.swing.JFrame {
              int result = JOptionPane.showConfirmDialog(null, "You do not have available contract", "Message", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Customer cus = getAccountCustomer();
+        if (!checkCustomerExisted() && cus != null) {
+            UpdateContractFrame updateContractFrame = new UpdateContractFrame();
+            updateContractFrame.setCustomer(cus);
+            updateContractFrame.initData(cus);
+            updateContractFrame.setVisible(true);
+            this.setVisible(false);
+        } else {
+             int result = JOptionPane.showConfirmDialog(null, "You do not have available contract", "Message", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

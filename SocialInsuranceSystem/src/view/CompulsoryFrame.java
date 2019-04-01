@@ -216,7 +216,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         return true;
     }
     
-     private boolean checkSalary() {
+    private boolean checkSalary() {
         Hometown hometown = this.getCustomer().hometown;
         Float salary;
         try {
