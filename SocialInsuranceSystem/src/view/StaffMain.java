@@ -19,6 +19,7 @@ public class StaffMain extends javax.swing.JFrame {
      */
     public StaffMain() {
         initComponents();
+        setLocationRelativeTo(null); 
     }
 
     /**

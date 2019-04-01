@@ -21,6 +21,7 @@ public class AdminMain extends javax.swing.JFrame {
      */
     public AdminMain() {
         initComponents();
+        setLocationRelativeTo(null); 
     }
 
     /**
@@ -76,11 +77,7 @@ public class AdminMain extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JTableModel frame = new JTableModel();
-        frame.addWindowListener(new WindowAdapter() {
-        public void windowClosing(WindowEvent e) {
-        System.exit(0);
-      }
-    });
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

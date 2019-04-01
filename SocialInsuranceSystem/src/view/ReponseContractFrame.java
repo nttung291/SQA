@@ -38,8 +38,6 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         this.listener = listener;
     }
 
-    
-    
     private void initTableData() {
         DefaultTableModel dm = (DefaultTableModel) tb_customer.getModel();
         Vector row = new Vector();
@@ -71,6 +69,7 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
      */
     public ReponseContractFrame() {
         initComponents();
+        setLocationRelativeTo(null); 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     

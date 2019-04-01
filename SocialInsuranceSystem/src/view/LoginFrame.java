@@ -26,6 +26,7 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        setLocationRelativeTo(null); 
         Connection.createConnection();
     }
     
@@ -67,6 +68,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lbMessage = new javax.swing.JLabel();
         tfPassword = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +96,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
         lbMessage.setText("No message");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,8 +125,10 @@ public class LoginFrame extends javax.swing.JFrame {
                         .addGap(304, 304, 304)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(btLogin)))
+                        .addGap(212, 212, 212)
+                        .addComponent(btLogin)
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1)))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -138,7 +149,9 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(lbMessage))
                 .addGap(72, 72, 72)
-                .addComponent(btLogin)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btLogin)
+                    .addComponent(jButton1))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
 
@@ -188,6 +201,12 @@ public class LoginFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btLoginActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         this.setVisible(false);
+        StartFrame startFrame = new StartFrame();
+        startFrame.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +247,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

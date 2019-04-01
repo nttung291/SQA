@@ -8,6 +8,7 @@ package view;
 import dao.CompulsoryContractDAO;
 import dao.Connection;
 import dao.CustomerDAO;
+import java.awt.Color;
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -56,6 +57,7 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
     public ConfirmCompulsoryFrame() {
         initComponents();
         Connection.createConnection();
+        setLocationRelativeTo(null); 
     }
     
     public void initData() {
@@ -94,6 +96,11 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         tb_customer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,9 +205,20 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
             result = CustomerDAO.inserCompulsoryCustomer(inCustomer);
         }
         if (result != 0 && result != -1) {
-             lbMessage.setText("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
-        } 
+            lbMessage.setBackground(Color.red);
+            lbMessage.setText("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
+        } else {
+            lbMessage.setText("Register Failed!");
+            lbMessage.setBackground(Color.red);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        CustomerMain customerMain = new CustomerMain();
+        customerMain.setAcc(this.getCustomer().account);
+        customerMain.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

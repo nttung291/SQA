@@ -9,6 +9,7 @@ import dao.CompulsoryContractDAO;
 import dao.Connection;
 import dao.CustomerDAO;
 import dao.HometownDAO;
+import java.awt.Color;
 import java.util.ArrayList;
 import model.CompulsoryContract;
 import model.Customer;
@@ -34,6 +35,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     public CompulsoryFrame() {
         initComponents();
         Connection.createConnection();
+        setLocationRelativeTo(null); 
     }
 
     /**
@@ -80,7 +82,12 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         lbMessage.setText("No message");
         lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButton2.setText("Cancel");
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,10 +157,13 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
+            lbMessage.setBackground(Color.red);
         } else if (!checkTaxNumber()) {
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
+            lbMessage.setBackground(Color.red);
         } else if(!checkCompany()){
             lbMessage.setText("Company code must equal 10 integer numbers from 010000000 to 949999999, please check your input again");
+            lbMessage.setBackground(Color.red);
         } else if (!checkSalary()) {
             
         } else {
@@ -171,17 +181,24 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        RegisterContractFrame registerContractFrame  = new RegisterContractFrame();
+        registerContractFrame.setAccount(this.customer.account);
+        registerContractFrame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private boolean checkEmptyBlank() {
         if (tfTax.getText().equals("") || tfSalary.getText().equals("") || tfCompany.getText().equals("")) return false;
         return true;
     }
     
     private boolean checkTaxNumber() {
-        for(int i=0; i < tfTax.getText().length(); i++) {
-            if (tfTax.getText().charAt(i) > '9' || tfTax.getText().charAt(i) <'0') {
-                return false;
-            }
-        } 
+        try {
+            Double.parseDouble(tfTax.getText());
+        } catch (Exception e) {
+            return false;
+        }
         if (tfTax.getText().length() != 13) return false;
         if (Integer.parseInt(tfTax.getText().substring(tfTax.getText().length()-1, tfTax.getText().length())) == 0) return false;
         if (Integer.parseInt(tfTax.getText().substring(0, 2)) != (this.getCustomer().hometown.ID)) return false;
@@ -189,11 +206,11 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     }
     
      private boolean checkCompany() {
-        for(int i=0; i < tfCompany.getText().length(); i++) {
-            if (tfCompany.getText().charAt(i) > '9' || tfCompany.getText().charAt(i) <'0') {
-                return false;
-            }
-        } 
+        try {
+            Double.parseDouble(tfCompany.getText());
+        } catch (Exception e) {
+            return false;
+        }
         if (tfCompany.getText().length() != 10) return false;
         if (Integer.parseInt(tfCompany.getText().substring(0, 2)) != (this.getCustomer().hometown.ID)) return false;
         return true;
@@ -206,23 +223,28 @@ public class CompulsoryFrame extends javax.swing.JFrame {
             salary = Float.parseFloat(tfSalary.getText());
         } catch (Exception e) {
             lbMessage.setText("Salary is wrong format");
+            lbMessage.setBackground(Color.red);
             return false;
         }
        
         if (hometown.section == 1 && (salary < 4472600 || salary > 29800000)){
+            lbMessage.setBackground(Color.red);
             lbMessage.setText("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 2 && (salary < 3969700 || salary > 29800000)) {
+            lbMessage.setBackground(Color.red);
             lbMessage.setText("Salary field must in section 2 range from 3.969.700 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 3 && (salary < 3477500 || salary > 29800000)) {
+            lbMessage.setBackground(Color.red);
             lbMessage.setText("Salary field must in section 2 range from 3.477.500 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 4 && (salary < 3124400 || salary > 29800000)) {
-             lbMessage.setText("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
+            lbMessage.setBackground(Color.red);
+            lbMessage.setText("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         return true;

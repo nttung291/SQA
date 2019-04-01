@@ -55,9 +55,14 @@ public class JTableModelStaff extends JFrame{
     public JTableModelStaff() {
         super("JButtonTable");
         Connection.createConnection();
+        
         compulsoryContracts =  CompulsoryContractDAO.selectAllCompulsoryContract();
         voluntaryContracts = VoluntaryContractDAO.selectAllVoluntaryContract();
         customers = CustomerDAO.selectAllCustomer();
+        
+        if (compulsoryContracts.size() == 0 && voluntaryContracts.size() == 0) {
+            int result = JOptionPane.showConfirmDialog(null, "No contract request at the moment!", "Message", JOptionPane.PLAIN_MESSAGE);
+        }
         
         dm = new DefaultTableModel();
         Vector column = new Vector();

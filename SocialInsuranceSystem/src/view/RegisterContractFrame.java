@@ -7,6 +7,7 @@ package view;
 
 import dao.Connection;
 import dao.HometownDAO;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     public RegisterContractFrame() {
         initComponents();
         Connection.createConnection();
+        setLocationRelativeTo(null); 
     }
 
     public void setAccount(Account account) {
@@ -47,6 +49,15 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -71,10 +82,35 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         lbMessage = new javax.swing.JLabel();
         cbGender = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList2);
+
+        jMenu3.setText("jMenu3");
+
+        jMenu4.setText("jMenu4");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jCheckBoxMenuItem2.setSelected(true);
+        jCheckBoxMenuItem2.setText("jCheckBoxMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,6 +164,13 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
         cbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,6 +187,12 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel12))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,6 +212,10 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(64, 64, 64)
+                                        .addComponent(jButton2))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(cbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,17 +227,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
                                         .addComponent(tfIDNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(370, 370, 370)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
@@ -229,13 +272,15 @@ public class RegisterContractFrame extends javax.swing.JFrame {
                     .addComponent(tfPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(cbPaymentDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(lbMessage))
-                .addGap(25, 25, 25)
-                .addComponent(jButton1)
-                .addGap(35, 35, 35))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -249,31 +294,31 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     }
     
     private boolean  checkIDNumber() {
-        for(int i=0; i < tfIDNumber.getText().length(); i++) {
-            if (tfIDNumber.getText().charAt(i) > '9' || tfIDNumber.getText().charAt(i) <'0') {
-                return false;
-            }
-        } 
+        try {
+            Double.parseDouble(tfIDNumber.getText());
+        } catch (Exception e) {
+            return false;
+        }
         if (tfIDNumber.getText().length() != 9) return false;
         return true;
     }
     
-    private boolean  checkPhoneNumber() {
-        for(int i=0; i < tfPhoneNumber.getText().length(); i++) {
-            if (tfPhoneNumber.getText().charAt(i) > '9' || tfPhoneNumber.getText().charAt(i) <'0') {
-                return false;
-            }
+    private boolean checkPhoneNumber() {
+        try {
+            Double.parseDouble(tfPhoneNumber.getText());
+        } catch (Exception e) {
+            return false;
         }
         if (!tfPhoneNumber.getText().substring(0, 2).equals("84")) return false;
         return true;
     }
     
     private boolean checkSocialNumber() {
-        for(int i=0; i < tfSINumber.getText().length(); i++) {
-            if (tfSINumber.getText().charAt(i) > '9' || tfSINumber.getText().charAt(i) <'0') {
-                return false;
-            }
-        } 
+        try {
+            Double.parseDouble(tfSINumber.getText());
+        } catch (Exception e) {
+            return false;
+        }
         if (tfSINumber.getText().length() != 10) return false;
         if (Integer.parseInt(tfSINumber.getText().substring(0, 2)) < 10 || Integer.parseInt(tfSINumber.getText().substring(0, 2)) > 72) return false;
         return true;
@@ -314,16 +359,22 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
+            lbMessage.setBackground(Color.red);
         } else if (!checkIDNumber()) {
             lbMessage.setText("ID number is wrong format");
+            lbMessage.setBackground(Color.red);
         } else if (!checkName()) {
              lbMessage.setText("Name is wrong format");
+             lbMessage.setBackground(Color.red);
         } else if (!checkPhoneNumber()){
              lbMessage.setText("Phone Number is wrong format");
+             lbMessage.setBackground(Color.red);
         } else if (!checkSocialNumber()) {
-             lbMessage.setText("Social number is wrong format");      
+             lbMessage.setText("Social number is wrong format");     
+             lbMessage.setBackground(Color.red);
         } else if(!checkEmail(tfEmail.getText())){
-            lbMessage.setText("Email is wrong format");      
+            lbMessage.setText("Email is wrong format");     
+            lbMessage.setBackground(Color.red);
         } else {
             ArrayList<Hometown> mCitys = HometownDAO.selectAllHometown();
             Hometown city = mCitys.get(cbCities.getSelectedIndex());
@@ -334,6 +385,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
             Customer cus = new Customer(this.getAccount(),null,null,city,tfName.getText(),gender,
                     dob,tfIDNumber.getText(), tfSINumber.getText(), tfEmail.getText(), tfPhoneNumber.getText(), cbPaymentDuration.getSelectedIndex(), null, 0f);
             lbMessage.setText("Regiter Successed");
+            lbMessage.setBackground(Color.black);
             
             ContractOptionFrame contractOptionFrame = new ContractOptionFrame();
             contractOptionFrame.setCustomer(cus);
@@ -343,6 +395,13 @@ public class RegisterContractFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        CustomerMain customerMain = new CustomerMain();
+        customerMain.setAcc(this.getAccount());
+        customerMain.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +449,9 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPaymentDuration;
     private javax.swing.JComboBox<String> cbYear;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -401,7 +463,14 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbMessage;
     private javax.swing.JTextField tfEmail;

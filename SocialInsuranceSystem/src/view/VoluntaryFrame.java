@@ -10,6 +10,7 @@ import dao.Connection;
 import dao.CustomerDAO;
 import dao.HometownDAO;
 import dao.VoluntaryContractDAO;
+import java.awt.Color;
 import java.util.ArrayList;
 import model.CompulsoryContract;
 import model.Customer;
@@ -36,6 +37,7 @@ public class VoluntaryFrame extends javax.swing.JFrame {
     public VoluntaryFrame() {
         initComponents();
         Connection.createConnection();
+        setLocationRelativeTo(null); 
     }
 
     /**
@@ -55,6 +57,7 @@ public class VoluntaryFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lbMessage = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +80,13 @@ public class VoluntaryFrame extends javax.swing.JFrame {
         lbMessage.setText("No message");
         lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jButton2.setText("Back");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,26 +97,29 @@ public class VoluntaryFrame extends javax.swing.JFrame {
                 .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(131, 131, 131)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel5))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(18, 18, 18)
+                                    .addComponent(tfTax, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabel3)
+                            .addGap(18, 18, 18)
+                            .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(tfTax, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton1)
+                        .addGap(53, 53, 53)
+                        .addComponent(jButton2)))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,7 +142,9 @@ public class VoluntaryFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                 .addGap(58, 58, 58)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(30, 30, 30))
         );
 
@@ -139,7 +154,9 @@ public class VoluntaryFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
+            lbMessage.setBackground(Color.red);
         } else if (!checkTaxNumber()) {
+            lbMessage.setBackground(Color.red);
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
         } else if (!checkSalary()) {
             
@@ -157,6 +174,13 @@ public class VoluntaryFrame extends javax.swing.JFrame {
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        RegisterContractFrame registerContractFrame  = new RegisterContractFrame();
+        registerContractFrame.setAccount(this.customer.account);
+        registerContractFrame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private boolean checkEmptyBlank() {
         if (tfTax.getText().equals("") || tfSalary.getText().equals("")) return false;
@@ -182,10 +206,12 @@ public class VoluntaryFrame extends javax.swing.JFrame {
             salary = Float.parseFloat(tfSalary.getText());
         } catch (Exception e) {
             lbMessage.setText("Salary is wrong format");
+            lbMessage.setBackground(Color.red);
             return false;
         }
        
         if (salary < 700000 || salary > 29800000) {
+            lbMessage.setBackground(Color.red);
             lbMessage.setText("Salary field must range from 700.000 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
@@ -232,6 +258,7 @@ public class VoluntaryFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

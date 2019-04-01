@@ -27,6 +27,7 @@ public class ContractOptionFrame extends javax.swing.JFrame {
      */
     public ContractOptionFrame() {
         initComponents();
+        setLocationRelativeTo(null); 
     }
 
     /**

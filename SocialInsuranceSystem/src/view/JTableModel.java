@@ -45,7 +45,13 @@ public class JTableModel extends JFrame{
     public JTableModel() {
     super("JButtonTable");
     Connection.createConnection();
+    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    
     account =  AccountCtr.getAllAccountUnstate();
+    
+    if (account.size() == 0) {
+        int result = JOptionPane.showConfirmDialog(null, "No register request at the moment!", "Message", JOptionPane.PLAIN_MESSAGE);
+    }
     
     dm = new DefaultTableModel();
     Vector column = new Vector();
@@ -95,6 +101,39 @@ public class JTableModel extends JFrame{
     
     public DefaultTableModel getDm() {
         return this.dm;
+    }
+    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(StaffMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JTableModel().setVisible(true);
+            }
+        });
     }
 }
 /**
