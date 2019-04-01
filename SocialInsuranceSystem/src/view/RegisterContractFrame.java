@@ -359,22 +359,22 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkIDNumber()) {
             lbMessage.setText("ID number is wrong format");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkName()) {
              lbMessage.setText("Name is wrong format");
-             lbMessage.setBackground(Color.red);
+             lbMessage.setForeground(Color.RED);
         } else if (!checkPhoneNumber()){
              lbMessage.setText("Phone Number is wrong format");
-             lbMessage.setBackground(Color.red);
+             lbMessage.setForeground(Color.RED);
         } else if (!checkSocialNumber()) {
              lbMessage.setText("Social number is wrong format");     
-             lbMessage.setBackground(Color.red);
+             lbMessage.setForeground(Color.RED);
         } else if(!checkEmail(tfEmail.getText())){
             lbMessage.setText("Email is wrong format");     
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else {
             ArrayList<Hometown> mCitys = HometownDAO.selectAllHometown();
             Hometown city = mCitys.get(cbCities.getSelectedIndex());
@@ -385,7 +385,7 @@ public class RegisterContractFrame extends javax.swing.JFrame {
             Customer cus = new Customer(this.getAccount(),null,null,city,tfName.getText(),gender,
                     dob,tfIDNumber.getText(), tfSINumber.getText(), tfEmail.getText(), tfPhoneNumber.getText(), cbPaymentDuration.getSelectedIndex(), null, 0f);
             lbMessage.setText("Regiter Successed");
-            lbMessage.setBackground(Color.black);
+            lbMessage.setForeground(Color.BLACK);
             
             ContractOptionFrame contractOptionFrame = new ContractOptionFrame();
             contractOptionFrame.setCustomer(cus);

@@ -8,6 +8,9 @@ package view;
 import dao.CompulsoryContractDAO;
 import dao.CustomerDAO;
 import dao.VoluntaryContractDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,7 +27,8 @@ import model.VoluntaryContract;
 public class ReponseContractFrame extends javax.swing.JFrame implements ReponseContractForm.ResponseContractListener{
     private Customer customer;
     private boolean isAccepted;
-     private RemoveRowListener listener;
+    private int type;
+    private RemoveRowListener listener;
 
     public Customer getCustomer() {
         return customer;
@@ -38,6 +42,10 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         this.listener = listener;
     }
 
+    public void setType(int type) {
+        this.type = type;
+    }
+    
     private void initTableData() {
         DefaultTableModel dm = (DefaultTableModel) tb_customer.getModel();
         Vector row = new Vector();
@@ -53,8 +61,10 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         row.add(customer.taxCode);
         if (customer.compulsoryContract != null) {
             row.add(customer.compulsoryContract.companyCode);
+            row.add(customer.compulsoryContract.description);
         } else {
-              row.add("No Company Code");
+            row.add("No Company Code");
+            row.add(customer.voluntaryContract.description);
         }
         row.add(customer.salary);
         if (customer.paymentDuration == 0) row.add("Month");
@@ -113,17 +123,17 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
 
         tb_customer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Company Code", "Salary", "Insurance Duration", "Cost"
+                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Company Code", "Desciptions", "Salary", "Insurance Duration", "Cost"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -141,31 +151,32 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jButton1)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jLabel1)))
-                .addContainerGap(376, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 405, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(350, 350, 350))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(77, 77, 77)
+                                .addComponent(jButton2)
+                                .addGap(298, 298, 298))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(96, 96, 96)
+                .addGap(98, 98, 98)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(73, 73, 73))
+                .addGap(75, 75, 75))
         );
 
         pack();
@@ -224,26 +235,17 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tb_customer;
-    // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void onClicked() {
-        int row = -1;
-        if (isAccepted) {
-            if (customer.compulsoryContract != null) {
+    
+    public void acceptRegister(int row, String dateString) {
+        if (customer.compulsoryContract != null) {
                 CompulsoryContract compulsoryContract = customer.compulsoryContract;
                 compulsoryContract.state = 1;
+                compulsoryContract.startedDate = dateString;
                 row = CompulsoryContractDAO.updateCompulsoryContract(compulsoryContract);
             } else if (customer.voluntaryContract != null) {
                 VoluntaryContract voluntaryContract = customer.voluntaryContract;
                 voluntaryContract.state = 1;
+                voluntaryContract.startedDate = dateString;
                 row = VoluntaryContractDAO.updateVoluntaryContract(voluntaryContract);
             }
             if (row != 0 && row != -1) {
@@ -253,10 +255,12 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
                 this.listener.onRemove();
                 if (result == JOptionPane.OK_OPTION) {
                     this.setVisible(false);
-                }
             }
-        } else {
-             if (customer.compulsoryContract != null) {
+        }
+    }
+    
+    public void declineRegister(int row) {
+        if (customer.compulsoryContract != null) {
                 CompulsoryContract compulsoryContract = customer.compulsoryContract;
                 int deleteCus = CustomerDAO.deleteCustomerByID(customer);
                 int deleteCon = 0;
@@ -284,8 +288,87 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
                 this.listener.onRemove();
                 if (result == JOptionPane.OK_OPTION) {
                     this.setVisible(false);
+            }
+        }
+    }
+    
+    public void declineCancel(int row) {
+        if (customer.compulsoryContract != null) {
+                CompulsoryContract compulsoryContract = customer.compulsoryContract;
+                compulsoryContract.state = 1;
+                row = CompulsoryContractDAO.updateCompulsoryContract(compulsoryContract);
+        } else if (customer.voluntaryContract != null) {
+                VoluntaryContract voluntaryContract = customer.voluntaryContract;
+                voluntaryContract.state = 1;
+                row = VoluntaryContractDAO.updateVoluntaryContract(voluntaryContract);
+        }
+        if (row != 0 && row != -1) {
+        
+                int result = JOptionPane.showConfirmDialog(null, "Finished!", "Message", JOptionPane.PLAIN_MESSAGE);
+                
+                this.listener.onRemove();
+                if (result == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+            }
+        }
+    }
+    
+    public void acceptCancel(int row) {
+         if (customer.compulsoryContract != null) {
+                CompulsoryContract compulsoryContract = customer.compulsoryContract;
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCon = 0;
+                if (deleteCus == 1){
+                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract);
+                }
+                if (deleteCon == 1) {
+                    row = 1;
+                }
+            } else if (customer.voluntaryContract != null) {
+                VoluntaryContract voluntaryContract = customer.voluntaryContract;
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCon = 0;
+                if (deleteCus == 1){
+                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract);
+                }
+                if (deleteCus == 1) {
+                    row = 1;
                 }
             }
+            if (row != 0 && row != -1) {
+        
+                int result = JOptionPane.showConfirmDialog(null, "Finished!", "Message", JOptionPane.PLAIN_MESSAGE);
+                
+                this.listener.onRemove();
+                if (result == JOptionPane.OK_OPTION) {
+                    this.setVisible(false);
+            }
+        }
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tb_customer;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onClicked() {
+        int row = -1;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	Date date = new Date();
+        String dateString = dateFormat.format(date);
+        
+        if (type == 0) {
+            if (isAccepted) acceptRegister(row, dateString);
+            else declineRegister(row);
+        } else if (type == 2) {
+            if (isAccepted) acceptCancel(row);
+            else declineCancel(row);
+        } else {
+            
         }
     }
     

@@ -154,14 +154,14 @@ public class VoluntaryFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkTaxNumber()) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
         } else if (!checkSalary()) {
             
         } else {
-            VoluntaryContract voluntaryContract = new VoluntaryContract(0, "No description");
+            VoluntaryContract voluntaryContract = new VoluntaryContract(0, "No description",null);
             Customer insCustomer = this.getCustomer();
             insCustomer.salary = Float.parseFloat(tfSalary.getText());
             insCustomer.voluntaryContract = voluntaryContract;
@@ -206,12 +206,12 @@ public class VoluntaryFrame extends javax.swing.JFrame {
             salary = Float.parseFloat(tfSalary.getText());
         } catch (Exception e) {
             lbMessage.setText("Salary is wrong format");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             return false;
         }
        
         if (salary < 700000 || salary > 29800000) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Salary field must range from 700.000 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }

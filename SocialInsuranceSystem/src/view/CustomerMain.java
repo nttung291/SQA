@@ -7,6 +7,7 @@ package view;
 
 import dao.CustomerDAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Account;
 import model.Customer;
 
@@ -37,7 +38,6 @@ public class CustomerMain extends javax.swing.JFrame {
         if (customers.size() != 0) {
              for (int i=0;i<customers.size();i++) {
                  if (customers.get(i).account.id == this.acc.id) {
-                     jButton1.setEnabled(false);
                      return false;
                  }
              }
@@ -45,6 +45,37 @@ public class CustomerMain extends javax.swing.JFrame {
             return true;
         }
         return true;
+    }
+    
+    public Customer getAccountCustomer() {
+        ArrayList<Customer> cusomers = CustomerDAO.selectAllCustomer();
+        if (cusomers.size() != 0) {
+            for (int i=0;i<cusomers.size();i++) {
+                if (cusomers.get(i).account.id == acc.id) {
+                    return cusomers.get(i);
+                }
+            }
+        }
+        return null;
+    }
+     
+    public Customer getContractCustomer() {
+        Customer customer = getAccountCustomer();
+        if (customer == null){
+            return null;
+        } else {
+            if (customer.compulsoryContract != null) {
+                if (customer.compulsoryContract.state != 0) {
+                    return customer;
+                }
+            } else if (customer.voluntaryContract != null) {
+                 if (customer.voluntaryContract.state != 0) {
+                    return customer;
+                }
+            }
+            else return null;
+        }
+        return null;
     }
     
     /**
@@ -77,6 +108,11 @@ public class CustomerMain extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancel Contract");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancel Contract");
 
@@ -122,8 +158,23 @@ public class CustomerMain extends javax.swing.JFrame {
             registerContractFrame.setAccount(this.getAcc());
             registerContractFrame.setVisible(true);
             this.setVisible(false);
+        } else {
+            jButton1.setEnabled(false);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Customer cus = getContractCustomer();
+        if (!checkCustomerExisted() && cus != null) {
+            CancelContractFrame cancelContractFrame = new CancelContractFrame();
+            cancelContractFrame.setCustomer(cus);
+            cancelContractFrame.initData(cus);
+            cancelContractFrame.setVisible(true);
+            this.setVisible(false);
+        } else {
+             int result = JOptionPane.showConfirmDialog(null, "You do not have available contract", "Message", JOptionPane.PLAIN_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

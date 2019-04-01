@@ -229,29 +229,29 @@ public class RegisterAccount extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkConfirmPassword()) {
             lbMessage.setText("Password does not match");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkValidPassword()) {
             lbMessage.setText("<html> Password has least one number, one lowercase characters, one uppercase characters  and a special character such as (!,#,$,^,&,..) and at least 8 characters </html>");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkValidUsername()) {
             lbMessage.setText("Username can not be special characters");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         }
         else {
             try {
                 int result = AccountCtr.registerAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()), cb_role.getSelectedIndex(), 0, "No descriptions");
                  if (result == -1) {
                      lbMessage.setText("Register Failed");
-                     lbMessage.setBackground(Color.red);
+                     lbMessage.setForeground(Color.RED);
                  } else if (result == -2) {
                      lbMessage.setText("Account has already");
-                     lbMessage.setBackground(Color.red);
+                     lbMessage.setForeground(Color.RED);
                  } else {
                       lbMessage.setText("Register Successed");
-                      lbMessage.setBackground(Color.black);
+                      lbMessage.setForeground(Color.BLACK);
                  }
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(RegisterAccount.class.getName()).log(Level.SEVERE, null, ex);

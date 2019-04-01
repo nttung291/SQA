@@ -13,6 +13,8 @@
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/CompulsoryContractDAO.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/VoluntaryContractDAO.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/RegisterAccount.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/model/CompulsoryContract.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/model/VoluntaryContract.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/StartFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ReponseContractFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ReponseContractForm.java</file>
@@ -20,6 +22,7 @@
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/VoluntaryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CustomerMain.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/LoginFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CancelContractFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CompulsoryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ConfirmCompulsoryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/StaffMain.java</file>

@@ -31,6 +31,7 @@ public class CompulsoryContractDAO {
                 contract.companyCode=rs.getString("companyCode");
                 contract.state=rs.getInt("state");
                 contract.description=rs.getString("Description");
+                contract.startedDate=rs.getString("StartedDate");
                 result.add(contract);
             }
         }catch(Exception e){
@@ -40,7 +41,7 @@ public class CompulsoryContractDAO {
     }
 
     public static int insertCompulsoryContract(CompulsoryContract contract){
-        String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description) VALUES (?,?,?)";
+        String sql = "INSERT INTO CompulsoryContract(CompanyCode,State,Description) VALUES (?,?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = null;
@@ -48,6 +49,7 @@ public class CompulsoryContractDAO {
             ps.setString(1, contract.companyCode);
             ps.setInt(2, contract.state);
             ps.setString(3, contract.description);
+            ps.setString(4, contract.startedDate);
             int rowCount=ps.executeUpdate();
             int candidateId = 0;
             if(rowCount == 1)
@@ -79,6 +81,7 @@ public class CompulsoryContractDAO {
                 contract.companyCode=rs.getString("CompanyCode");
                 contract.state=rs.getInt("state");
                 contract.description=rs.getString("description");
+                contract.startedDate=rs.getString("StartedDate");
                 result=contract;
                 return result;
             }
@@ -89,13 +92,14 @@ public class CompulsoryContractDAO {
     }
     
       public static int updateCompulsoryContract(CompulsoryContract compulsoryContract){
-        String sql = "UPDATE CompulsoryContract SET CompanyCode=?,State=?,Description=? WHERE id=?";
+        String sql = "UPDATE CompulsoryContract SET CompanyCode=?,State=?,Description=?,StartedDate=? WHERE id=?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(4, compulsoryContract.id);
+            ps.setInt(5, compulsoryContract.id);
             ps.setString(1, compulsoryContract.companyCode);
             ps.setInt(2, compulsoryContract.state);
             ps.setString(3, compulsoryContract.description);
+            ps.setString(4, compulsoryContract.startedDate);
             int rowCount=ps.executeUpdate();
             return rowCount;
         }catch(Exception e){

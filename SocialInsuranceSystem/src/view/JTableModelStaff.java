@@ -67,6 +67,7 @@ public class JTableModelStaff extends JFrame{
         dm = new DefaultTableModel();
         Vector column = new Vector();
         column.add("Request Number");
+        column.add("Request Type");
         column.add("Name");
         column.add("State");
         column.add("Payment Duration");
@@ -89,14 +90,22 @@ public class JTableModelStaff extends JFrame{
     
     private void insertContract() {
         for (int i=0;i<compulsoryContracts.size();i++) {
-            if (compulsoryContracts.get(i).state == 0) {
+            if (compulsoryContracts.get(i).state != 1) {
                 for (int j=0;j<customers.size();j++) {
                     if (customers.get(j).compulsoryContract != null) {
                         if (customers.get(j).compulsoryContract.id == compulsoryContracts.get(i).id) {
                             requestNumber = requestNumber+1;
                             Integer id = requestNumber;
+                            String requestType;
+                            if (customers.get(j).compulsoryContract.state == 0) {
+                                requestType = "Register";
+                            } else if (customers.get(j).compulsoryContract.state == 2) {
+                                requestType = "Cancel";
+                            } else {
+                                requestType = "Update";
+                            }
                             String name = customers.get(j).name;
-                            Integer state = 0;
+                            Integer state = customers.get(j).compulsoryContract.state;
                             String paymentDuration;
                             if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
                             else paymentDuration = "Year";
@@ -104,6 +113,7 @@ public class JTableModelStaff extends JFrame{
                             String cost = String.valueOf((customers.get(j).salary * 25.5/100));
                             Vector row = new Vector();
                             row.add(id);
+                            row.add(requestType);
                             row.add(name);
                             row.add(state);
                             row.add(paymentDuration);
@@ -119,15 +129,23 @@ public class JTableModelStaff extends JFrame{
         }
         
         for (int i=0;i<voluntaryContracts.size();i++) {
-            if (voluntaryContracts.get(i).state == 0) {
+            if (voluntaryContracts.get(i).state != 1) {
                 VoluntaryContract voluntaryContract = voluntaryContracts.get(i);
                 for (int j=0;j<customers.size();j++) {
                     if (customers.get(j).voluntaryContract != null) {
                         if (customers.get(j).voluntaryContract.id == voluntaryContract.id) {
                             requestNumber = requestNumber+1;
                             Integer id = requestNumber;
+                            String requestType;
+                            if (customers.get(j).voluntaryContract.state == 0) {
+                                requestType = "Register";
+                            } else if (customers.get(j).voluntaryContract.state == 2) {
+                                requestType = "Cancel";
+                            } else {
+                                requestType = "Update";
+                            }
                             String name = customers.get(j).name;
-                            Integer state = 0;
+                            Integer state = customers.get(j).voluntaryContract.state;
                             String paymentDuration;
                             if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
                             else paymentDuration = "Year";
@@ -135,6 +153,7 @@ public class JTableModelStaff extends JFrame{
                             String cost = String.valueOf((customers.get(j).salary * 22/100));
                             Vector row = new Vector();
                             row.add(id);
+                            row.add(requestType);
                             row.add(name);
                             row.add(state);
                             row.add(paymentDuration);
@@ -254,11 +273,16 @@ class ButtonStaffEditor extends DefaultCellEditor implements ReponseContractFram
 
   public Object getCellEditorValue() {
     if (isPushed) {
-           ReponseContractFrame reponseFrame = new ReponseContractFrame();
-           reponseFrame.setCustomer(customers.get(affectedRow));
-           reponseFrame.setListener(this);
-           reponseFrame.initData();
-           reponseFrame.setVisible(true);
+        ReponseContractFrame reponseFrame = new ReponseContractFrame();
+        reponseFrame.setCustomer(customers.get(affectedRow));
+        if (customers.get(affectedRow).compulsoryContract != null) {
+            reponseFrame.setType(customers.get(affectedRow).compulsoryContract.state);
+        } else if (customers.get(affectedRow).voluntaryContract != null) {
+            reponseFrame.setType(customers.get(affectedRow).voluntaryContract.state);
+        }
+        reponseFrame.setListener(this);
+        reponseFrame.initData();
+        reponseFrame.setVisible(true);
     }
     isPushed = false;
     return "See Detail";

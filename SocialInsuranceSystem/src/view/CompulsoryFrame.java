@@ -157,17 +157,17 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkTaxNumber()) {
             lbMessage.setText("Tax code must equal 13 integer numbers from 100000000001 to 729999999999 and contain two first number must represent for a specific provincial  , please check your input again");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if(!checkCompany()){
             lbMessage.setText("Company code must equal 10 integer numbers from 010000000 to 949999999, please check your input again");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         } else if (!checkSalary()) {
             
         } else {
-            CompulsoryContract compulsoryContract = new CompulsoryContract(tfCompany.getText(),0, "No description");
+            CompulsoryContract compulsoryContract = new CompulsoryContract(tfCompany.getText(),0, "No description",null);
             Customer insCustomer = this.getCustomer();
             insCustomer.salary = Float.parseFloat(tfSalary.getText());
             insCustomer.compulsoryContract = compulsoryContract;
@@ -223,27 +223,27 @@ public class CompulsoryFrame extends javax.swing.JFrame {
             salary = Float.parseFloat(tfSalary.getText());
         } catch (Exception e) {
             lbMessage.setText("Salary is wrong format");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.red);
             return false;
         }
        
         if (hometown.section == 1 && (salary < 4472600 || salary > 29800000)){
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 2 && (salary < 3969700 || salary > 29800000)) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Salary field must in section 2 range from 3.969.700 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 3 && (salary < 3477500 || salary > 29800000)) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Salary field must in section 2 range from 3.477.500 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 4 && (salary < 3124400 || salary > 29800000)) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }

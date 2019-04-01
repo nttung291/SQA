@@ -29,6 +29,7 @@ public class VoluntaryContractDAO {
                 contract.id=rs.getInt("id");
                 contract.state=rs.getInt("state");
                 contract.description=rs.getString("Description");
+                contract.startedDate=rs.getString("StartedDate");
                 result.add(contract);
             }
         }catch(Exception e){
@@ -38,12 +39,13 @@ public class VoluntaryContractDAO {
     }
 
     public static int insertVoluntaryContract(VoluntaryContract contract){
-        String sql = "INSERT INTO VoluntaryContract(state,Description) VALUES (?,?)";
+        String sql = "INSERT INTO VoluntaryContract(state,Description,StartedDate) VALUES (?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = null;
             ps.setInt(1, contract.state);
             ps.setString(2, contract.description);
+            ps.setString(3, contract.startedDate);
             int rowCount=ps.executeUpdate();
             int candidateId = 0;
             if(rowCount == 1)
@@ -74,6 +76,7 @@ public class VoluntaryContractDAO {
                 contract.id=rs.getInt("id");
                 contract.state=rs.getInt("state");
                 contract.description=rs.getString("description");
+                contract.startedDate=rs.getString("StartedDate");
                 result=contract;
                 return result;
             }
@@ -84,12 +87,13 @@ public class VoluntaryContractDAO {
     }
     
     public static int updateVoluntaryContract(VoluntaryContract voluntaryContract){
-        String sql = "UPDATE VoluntaryContract SET State=?,Description=? WHERE id=?";
+        String sql = "UPDATE VoluntaryContract SET State=?,Description=?,StartedDate=? WHERE id=?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(3, voluntaryContract.id);
+            ps.setInt(4, voluntaryContract.id);
             ps.setInt(1, voluntaryContract.state);
             ps.setString(2, voluntaryContract.description);
+            ps.setString(3, voluntaryContract.startedDate);
             int rowCount=ps.executeUpdate();
             return rowCount;
         }catch(Exception e){

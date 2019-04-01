@@ -205,11 +205,11 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
             result = CustomerDAO.inserCompulsoryCustomer(inCustomer);
         }
         if (result != 0 && result != -1) {
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
             lbMessage.setText("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
         } else {
             lbMessage.setText("Register Failed!");
-            lbMessage.setBackground(Color.red);
+            lbMessage.setForeground(Color.RED);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
