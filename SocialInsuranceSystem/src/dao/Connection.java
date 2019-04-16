@@ -33,13 +33,13 @@ public class Connection {
 //        }
         if(connection == null){
 //            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
-            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
+            String dbUrl = "jdbc:mysql://localhost:3306/SocialInsuranceDB";
             String dbClass = "com.mysql.jdbc.Driver";
 
             try {
                 Class.forName(dbClass);
-//                connection = DriverManager.getConnection (dbUrl, "root", "");
-                connection = DriverManager.getConnection (dbUrl, "root", "root");
+                connection = DriverManager.getConnection (dbUrl, "root", "");
+//                connection = DriverManager.getConnection (dbUrl, "root", "root");
             }catch(Exception e) {
                 e.printStackTrace();
                 int result = JOptionPane.showConfirmDialog(null, "No Internet", "Message", JOptionPane.PLAIN_MESSAGE);

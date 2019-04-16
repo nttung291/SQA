@@ -11,6 +11,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import model.Account;
 import model.Customer;
 import model.Hometown;
@@ -36,6 +39,50 @@ public class RegisterContractFrame extends javax.swing.JFrame {
 
     public Account getAccount() {
         return account;
+    }
+
+    public String getTfName() {
+        return tfName.getText();
+    }
+
+    public void setTfName(String tfName) {
+        this.tfName.setText(tfName);
+    }
+
+    public String getLbMessage() {
+        return lbMessage.getText();
+    }
+
+    public String getTfIDNumber() {
+        return tfIDNumber.getText();
+    }
+
+    public String getTfPhoneNumber() {
+        return tfPhoneNumber.getText();
+    }
+
+    public String getTfSINumber() {
+        return tfSINumber.getText();
+    }
+
+    public void setTfEmail(String tfEmail) {
+        this.tfEmail.setText(tfEmail);
+    }
+
+    public void setTfIDNumber(String tfIDNumber) {
+        this.tfIDNumber.setText(tfIDNumber);
+    }
+
+    public void setTfPhoneNumber(String tfPhoneNumber) {
+        this.tfPhoneNumber.setText(tfPhoneNumber);
+    }
+
+    public void setTfSINumber(String tfSINumber) {
+        this.tfSINumber.setText(tfSINumber);
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
     }
     
     /**

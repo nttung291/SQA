@@ -11,6 +11,9 @@ import dao.CustomerDAO;
 import dao.HometownDAO;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import model.CompulsoryContract;
 import model.Customer;
 import model.Hometown;
@@ -153,6 +156,38 @@ public class CompulsoryFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public String getLbMessage() {
+        return lbMessage.getText();
+    }
+
+    public String getTfCompany() {
+        return tfCompany.getText();
+    }
+
+    public String getTfSalary() {
+        return tfSalary.getText();
+    }
+
+    public String getTfTax() {
+        return tfTax.getText();
+    }
+
+    public void setTfCompany(String tfCompany) {
+        this.tfCompany.setText(tfCompany);
+    }
+
+    public void setTfSalary(String tfSalary) {
+        this.tfSalary.setText(tfSalary);
+    }
+
+    public void setTfTax(String tfTax) {
+        this.tfTax.setText(tfTax);
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
