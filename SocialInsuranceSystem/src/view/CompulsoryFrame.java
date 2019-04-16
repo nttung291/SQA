@@ -24,7 +24,7 @@ import model.Hometown;
  */
 public class CompulsoryFrame extends javax.swing.JFrame {
     private Customer customer;
-
+    private ConfirmCompulsoryFrame confirmCompulsoryFrame;
     public Customer getCustomer() {
         return customer;
     }
@@ -189,6 +189,10 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         return jButton1;
     }
 
+    public ConfirmCompulsoryFrame getConfirmCompulsoryFrame() {
+        return confirmCompulsoryFrame;
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
             lbMessage.setText("Informations can not be blank");
@@ -208,7 +212,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
             insCustomer.compulsoryContract = compulsoryContract;
             insCustomer.taxCode = tfTax.getText();
             
-            ConfirmCompulsoryFrame confirmCompulsoryFrame = new ConfirmCompulsoryFrame();
+            confirmCompulsoryFrame = new ConfirmCompulsoryFrame();
             confirmCompulsoryFrame.setCustomer(insCustomer);
             confirmCompulsoryFrame.initData();
             confirmCompulsoryFrame.setVisible(true);

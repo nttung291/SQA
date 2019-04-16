@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -43,6 +44,10 @@ public class RegisterAccount extends javax.swing.JFrame {
     public Color getLbMessageColor(){		
         return lbMessage.getForeground();		
     }		
+
+    public String getTfUsername() {
+        return tfUsername.getText();
+    }
 
     public void setTfPassword(String tfPassword) {		
         this.tfPassword.setText(tfPassword);		
@@ -247,10 +252,10 @@ public class RegisterAccount extends javax.swing.JFrame {
                      lbMessage.setText("Register Failed");
                      lbMessage.setForeground(Color.RED);
                  } else if (result == -2) {
-                     lbMessage.setText("Account has already");
+                     lbMessage.setText("Account has been existed already");
                      lbMessage.setForeground(Color.RED);
                  } else {
-                      lbMessage.setText("Register Successed");
+                      lbMessage.setText("Register Successfully");
                       lbMessage.setForeground(Color.BLACK);
                  }
             } catch (UnsupportedEncodingException ex) {
