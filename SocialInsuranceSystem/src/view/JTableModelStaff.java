@@ -166,7 +166,7 @@ public class JTableModelStaff extends JFrame{
                             row.add(state);
                             row.add(paymentDuration);
                             row.add(type);
-                            row.add(cost);
+                            row.add(cost + " VND");
                             row.add("See Detail");
                             values.add(row);
                             addedCustomers.add(customers.get(j));

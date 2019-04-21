@@ -68,7 +68,7 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             // The comma in the format specifier does the trick
             long longsalary = (long) customer.salary;
             String salary = String.format("%,d", longsalary);
-            lbSalary.setText(salary);
+            lbSalary.setText(salary + " VND");
         } catch (NumberFormatException e) {
             System.out.println("NumberFormat");
         }
@@ -80,7 +80,7 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             // The comma in the format specifier does the trick
             long longsalary = (long) (customer.salary * 25.5/100);
             String salary = String.format("%,d", longsalary);
-            lbCost.setText(salary);
+            lbCost.setText(salary + " VND");
            
         } catch (NumberFormatException e) {
             System.out.println("NumberFormat");
