@@ -6,6 +6,7 @@
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/AccountDAO.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ConfirmVoluntaryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/Connection.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/test/view/RegisterAccountIT.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/JTableModelStaff.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/AdminMain.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/UpdateContractFrame.java</file>
@@ -25,6 +26,7 @@
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ConfirmCompulsoryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/StaffMain.java</file>
             <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/JTableModel.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/test/view/LoginAccountIT.java</file>
         </group>
     </open-files>
 </project-private>

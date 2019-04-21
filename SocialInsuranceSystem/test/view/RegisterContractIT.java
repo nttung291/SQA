@@ -280,4 +280,16 @@ public class RegisterContractIT {
         String msg=compulsoryFrm.getLbMessage();
         assertEquals(msg, "This field must equal 13 integer numbers from 010000000001 to 949999999999 and contain two first number must represent for a specific provincial , please check your input again");
     }
+    @Test 
+    public void testCase46_TestCostOfCompulsoryInsurance(){
+        CompulsoryFrame compulsoryFrm=new CompulsoryFrame();
+        compulsoryFrm.setTfCompany("0118000001");
+        compulsoryFrm.setTfSalary("5000000");
+        compulsoryFrm.setTfTax("9500000000000");
+        ConfirmCompulsoryFrame confirmFrm=compulsoryFrm.getConfirmCompulsoryFrame();
+//        confirmFrm.
+//        
+//        String msg=compulsoryFrm.getLbMessage();
+//        assertEquals(msg, "");
+    }
 }

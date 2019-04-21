@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.UIManager;
+import javax.swing.JTextField;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -39,6 +40,10 @@ public class RegisterAccount extends javax.swing.JFrame {
         setLocationRelativeTo(null); 
         this.setTitle("Register Account");
     }	
+
+    public String getTfUsername() {
+        return tfUsername.getText();
+    }
 
     public void setTfPassword(String tfPassword) {		
         this.tfPassword.setText(tfPassword);		
@@ -247,7 +252,6 @@ public class RegisterAccount extends javax.swing.JFrame {
                         LoginFrame loginFrame = new LoginFrame();
                         loginFrame.setVisible(true);
                     }
-        
                  }
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(RegisterAccount.class.getName()).log(Level.SEVERE, null, ex);

@@ -91,6 +91,24 @@ public class AccountDAO extends Connection{
         return -1;
     }
     
+    public static int rollback(){
+        try{
+            connection.rollback();
+            return 1;
+        }catch(Exception e){
+            return -1;
+        }
+    }
+    
+    public static int disableAutoCommit(){
+        try{
+            connection.setAutoCommit(false);
+            return 1;
+        }catch(Exception e){
+            return -1;
+        }
+    }
+    
     public static Account selectAccountByID(int id){
         Account result;
         String sql = "SELECT * FROM Account WHERE id = ?";
