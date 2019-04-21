@@ -3,13 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/src/view/LoginFrame.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/test/view/RegisterAccountIT.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/test/view/RegisterContractIT.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/src/view/RegisterAccount.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/test/view/LoginAccountIT.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/src/dao/AccountDAO.java</file>
-            <file>file:/home/habui/Desktop/term_docs/Software%20Quality%20Assurance/SQA/SocialInsuranceSystem/src/view/ConfirmCompulsoryFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/AccountDAO.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ConfirmVoluntaryFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/dao/Connection.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/JTableModelStaff.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/AdminMain.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/UpdateContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/RegisterContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/model/Customer.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/model/Account.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/RegisterAccount.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/StartFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ReponseContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ReponseContractForm.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ContractOptionFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/VoluntaryFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CustomerMain.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/LoginFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CancelContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/CompulsoryFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/ConfirmCompulsoryFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/StaffMain.java</file>
+            <file>file:/Users/nttungg/Desktop/SQA/SQA/SocialInsuranceSystem/src/view/JTableModel.java</file>
         </group>
     </open-files>
 </project-private>

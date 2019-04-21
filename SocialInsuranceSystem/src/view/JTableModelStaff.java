@@ -53,7 +53,7 @@ public class JTableModelStaff extends JFrame{
     Vector values = new Vector();
             
     public JTableModelStaff() {
-        super("JButtonTable");
+        super("Reponse Contract Table");
         Connection.createConnection();
         
         compulsoryContracts =  CompulsoryContractDAO.selectAllCompulsoryContract();
@@ -110,7 +110,11 @@ public class JTableModelStaff extends JFrame{
                             if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
                             else paymentDuration = "Year";
                             String type = "Compulsory";
-                            String cost = String.valueOf((customers.get(j).salary * 25.5/100));
+        
+                            long longsalary = (long) (customers.get(j).salary * 25.5/100);
+                            String cost = "";
+                            cost = String.format("%,d", longsalary);
+                            
                             Vector row = new Vector();
                             row.add(id);
                             row.add(requestType);
@@ -150,7 +154,11 @@ public class JTableModelStaff extends JFrame{
                             if (customers.get(j).paymentDuration == 0) paymentDuration = "Monthly";
                             else paymentDuration = "Year";
                             String type = "Voluntary";
-                            String cost = String.valueOf((customers.get(j).salary * 22/100));
+                            
+                            long longsalary = (long) (customers.get(j).salary * 22/100);
+                            String cost = "";
+                            cost = String.format("%,d", longsalary);
+                           
                             Vector row = new Vector();
                             row.add(id);
                             row.add(requestType);

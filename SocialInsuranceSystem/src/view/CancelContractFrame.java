@@ -11,6 +11,7 @@ import dao.VoluntaryContractDAO;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import model.Account;
 import model.CompulsoryContract;
 import model.Customer;
@@ -21,6 +22,7 @@ import model.VoluntaryContract;
  * @author nttungg
  */
 public class CancelContractFrame extends javax.swing.JFrame {
+     UIManager um = new UIManager();
     private Customer customer;
     /**
      * Creates new form CancelContractFrame
@@ -28,6 +30,7 @@ public class CancelContractFrame extends javax.swing.JFrame {
     public CancelContractFrame() {
         initComponents();
         setLocationRelativeTo(null); 
+        this.setTitle("Cancel Contract");
     }
 
       public void setCustomer(Customer customer) {
@@ -67,6 +70,17 @@ public class CancelContractFrame extends javax.swing.JFrame {
         }
         return description;
     }
+    
+    private void showError(String message) {
+        um.put("OptionPane.messageForeground", Color.red);
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+    }
+    
+     private int showSuccess(String message) {
+        um.put("OptionPane.messageForeground", Color.BLUE);
+        int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
+        return result;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,8 +112,6 @@ public class CancelContractFrame extends javax.swing.JFrame {
         lbSIN = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         lbStartedDate = new javax.swing.JLabel();
-        lbMessage = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         jLabel16.setText("jLabel16");
 
@@ -118,10 +130,15 @@ public class CancelContractFrame extends javax.swing.JFrame {
         });
 
         cbPolicy.setText("Policy problem");
+        cbPolicy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPolicyActionPerformed(evt);
+            }
+        });
 
         cbCompany.setText("Company problem");
 
-        jLabel3.setText("Ohther Reason:");
+        jLabel3.setText("Ohther Reason :");
 
         jButton1.setText("Cancel Contract");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -163,11 +180,6 @@ public class CancelContractFrame extends javax.swing.JFrame {
 
         lbStartedDate.setText("20/2/2019");
 
-        lbMessage.setText("No message");
-        lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel5.setText("Message:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,33 +187,32 @@ public class CancelContractFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
+                        .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
+                                        .addGap(17, 17, 17)
                                         .addComponent(cbFinancial)
-                                        .addGap(31, 31, 31)
+                                        .addGap(35, 35, 35)
                                         .addComponent(cbPolicy)
-                                        .addGap(26, 26, 26)
+                                        .addGap(47, 47, 47)
                                         .addComponent(cbCompany))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane3))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(lbName))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lbDob)))
-                                .addGap(151, 151, 151)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel8))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbDob)
+                                    .addComponent(lbName))
+                                .addGap(123, 123, 123)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel14)
@@ -213,64 +224,57 @@ public class CancelContractFrame extends javax.swing.JFrame {
                             .addComponent(cbAgree)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(30, 30, 30)
-                                .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(325, 325, 325)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addComponent(jButton1)
-                        .addGap(88, 88, 88)
-                        .addComponent(jButton2)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(334, 334, 334)
+                        .addComponent(jLabel1)))
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(130, 130, 130)
+                .addComponent(jButton2)
+                .addGap(229, 229, 229))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lbName)
                     .addComponent(jLabel12)
                     .addComponent(lbSIN))
-                .addGap(27, 27, 27)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(lbDob)
                     .addComponent(jLabel14)
                     .addComponent(lbStartedDate))
-                .addGap(36, 36, 36)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbFinancial)
                     .addComponent(cbPolicy)
                     .addComponent(cbCompany))
-                .addGap(37, 37, 37)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addGap(29, 29, 29)
                 .addComponent(cbAgree)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62)
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
@@ -282,8 +286,8 @@ public class CancelContractFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!cbAgree.isSelected()) {
-            lbMessage.setText("You must agree with all the T&C");
-            lbMessage.setForeground(Color.RED);
+            showError("You must agree with all the T&C");
+           
         } else {
             int result = JOptionPane.showConfirmDialog(null, "Are you sure want to cancel your contract? This action may affect your future benefit in insurance", "Message", JOptionPane.PLAIN_MESSAGE);
             int row = -1;
@@ -300,8 +304,8 @@ public class CancelContractFrame extends javax.swing.JFrame {
                     row = VoluntaryContractDAO.updateVoluntaryContract(voluntaryContract);
                 }
                 if (row != 0 && row != -1) {
-                    lbMessage.setText("Your request is being processed. Please wait 1-2 days for your confirmation. Thank you for using our insurance service!");
-                    lbMessage.setForeground(Color.BLACK);
+                    showSuccess("Your request is being processed. Please wait 1-2 days for your confirmation. Thank you for using our insurance service!");
+                  
                 } 
             }
         }
@@ -313,6 +317,10 @@ public class CancelContractFrame extends javax.swing.JFrame {
         customerMain.setAcc(this.getCustomer().account);
         customerMain.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cbPolicyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPolicyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbPolicyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,13 +371,11 @@ public class CancelContractFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbDob;
-    private javax.swing.JLabel lbMessage;
     private javax.swing.JLabel lbName;
     private javax.swing.JLabel lbSIN;
     private javax.swing.JLabel lbStartedDate;

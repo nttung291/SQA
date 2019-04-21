@@ -16,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.UIManager;
 import model.Account;
 import utils.EncodeDecode;
 
@@ -26,6 +28,7 @@ import utils.EncodeDecode;
  */
 public class RegisterAccount extends javax.swing.JFrame {
     private int role = 0;
+    private UIManager um = new UIManager();
 
     /**
      * Creates new form RegisterAccount
@@ -34,15 +37,8 @@ public class RegisterAccount extends javax.swing.JFrame {
         initComponents();
         Connection.createConnection();
         setLocationRelativeTo(null); 
-    }
-    
-    public String getLbMessage() {		
-        return lbMessage.getText();		
-    }		
-
-    public Color getLbMessageColor(){		
-        return lbMessage.getForeground();		
-    }		
+        this.setTitle("Register Account");
+    }	
 
     public void setTfPassword(String tfPassword) {		
         this.tfPassword.setText(tfPassword);		
@@ -63,6 +59,17 @@ public class RegisterAccount extends javax.swing.JFrame {
     public JButton getjButton1() {		
         return jButton1;		
     }
+    
+    private void showError(String message) {
+        um.put("OptionPane.messageForeground", Color.red);
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+    }
+    
+     private int showSuccess(String message) {
+        um.put("OptionPane.messageForeground", Color.BLUE);
+        int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
+        return result;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,8 +88,6 @@ public class RegisterAccount extends javax.swing.JFrame {
         cb_role = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        lbMessage = new javax.swing.JLabel();
         tfPassword = new javax.swing.JPasswordField();
         tfConfirmPassword = new javax.swing.JPasswordField();
         jButton2 = new javax.swing.JButton();
@@ -120,11 +125,6 @@ public class RegisterAccount extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Message : ");
-
-        lbMessage.setText("No message");
-        lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,33 +137,30 @@ public class RegisterAccount extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfUsername)
+                    .addComponent(tfPassword)
+                    .addComponent(tfConfirmPassword)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(jLabel5))
+                        .addComponent(cb_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 189, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfUsername)
-                            .addComponent(tfPassword)
-                            .addComponent(tfConfirmPassword)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(44, 44, 44)
-                                        .addComponent(jButton2))
-                                    .addComponent(cb_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(122, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(78, 78, 78)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(271, 271, 271))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,15 +183,11 @@ public class RegisterAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cb_role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(lbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
-                .addGap(44, 44, 44)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(63, 63, 63))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -228,30 +221,33 @@ public class RegisterAccount extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
-            lbMessage.setText("Informations can not be blank");
-            lbMessage.setForeground(Color.RED);
+            showError("Informations can not be blank");
+          
         } else if (!checkConfirmPassword()) {
-            lbMessage.setText("Password does not match");
-            lbMessage.setForeground(Color.RED);
+            showError("Password does not match");
+          
         } else if (!checkValidPassword()) {
-            lbMessage.setText("<html> Password has least one number, one lowercase characters, one uppercase characters  and a special character such as (!,#,$,^,&,..) and at least 8 characters </html>");
-            lbMessage.setForeground(Color.RED);
+            showError("<html> Password has least one number, one lowercase characters, one uppercase characters  and a special character such as (!,#,$,^,&,..) and at least 8 characters </html>");
+          
         } else if (!checkValidUsername()) {
-            lbMessage.setText("Username can not be special characters");
-            lbMessage.setForeground(Color.RED);
+            showError("Username can not be special characters");
         }
         else {
             try {
                 int result = AccountCtr.registerAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()), cb_role.getSelectedIndex(), 0, "No descriptions");
                  if (result == -1) {
-                     lbMessage.setText("Register Failed");
-                     lbMessage.setForeground(Color.RED);
+                    showError("Register Failed");
+         
                  } else if (result == -2) {
-                     lbMessage.setText("Account has already");
-                     lbMessage.setForeground(Color.RED);
+                    showError("Account has already");
+                   
                  } else {
-                      lbMessage.setText("Register Successed");
-                      lbMessage.setForeground(Color.BLACK);
+                    if (showSuccess("Register Successed") == JOptionPane.OK_OPTION) {
+                        this.setVisible(false);
+                        LoginFrame loginFrame = new LoginFrame();
+                        loginFrame.setVisible(true);
+                    }
+        
                  }
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(RegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
@@ -317,8 +313,6 @@ public class RegisterAccount extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lbMessage;
     private javax.swing.JPasswordField tfConfirmPassword;
     private javax.swing.JPasswordField tfPassword;
     private javax.swing.JTextField tfUsername;

@@ -43,14 +43,14 @@ public class JTableModel extends JFrame{
     ArrayList<Account> account;
             
     public JTableModel() {
-    super("JButtonTable");
+    super("Reponse Account Register Table");
     Connection.createConnection();
     this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     
     account =  AccountCtr.getAllAccountUnstate();
     
     if (account.size() == 0) {
-        int result = JOptionPane.showConfirmDialog(null, "No register request at the moment!", "Message", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "No register request at the moment!", "Message", JOptionPane.PLAIN_MESSAGE);
     }
     
     dm = new DefaultTableModel();

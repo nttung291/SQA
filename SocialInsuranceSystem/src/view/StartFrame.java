@@ -5,6 +5,8 @@
  */
 package view;
 
+import dao.Connection;
+
 /**
  *
  * @author nttungg
@@ -17,6 +19,8 @@ public class StartFrame extends javax.swing.JFrame {
     public StartFrame() {
         initComponents();
         setLocationRelativeTo(null); 
+        Connection.createConnection();
+        this.setTitle("Social Insurance System");
     }
 
     /**
@@ -32,6 +36,8 @@ public class StartFrame extends javax.swing.JFrame {
         btLoginStart = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         btRegister.setText("Register");
         btRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -51,27 +57,21 @@ public class StartFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(btRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(209, 209, 209)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btLoginStart, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(212, Short.MAX_VALUE)))
+                    .addComponent(btRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
+                .addComponent(btLoginStart, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(btRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(124, 124, 124)
-                    .addComponent(btLoginStart, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(335, Short.MAX_VALUE)))
+                .addGap(155, 155, 155))
         );
 
         pack();
@@ -83,7 +83,8 @@ public class StartFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btLoginStartActionPerformed
 
     private void btRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegisterActionPerformed
-        new RegisterAccount().setVisible(true);
+        RegisterAccount registerAccount = new RegisterAccount();
+        registerAccount.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btRegisterActionPerformed
 

@@ -30,7 +30,7 @@ CREATE TABLE `Account` (
   `State` int(10) NOT NULL,
   `Description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `Account` (
 
 LOCK TABLES `Account` WRITE;
 /*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (2,'nttung291','TnR0dW5nQDEyMw==',0,1,'No descriptions'),(3,'nttung','TnR0dW5nQDE=',0,1,'No descriptions'),(4,'tungnt','TnR0dW5nQDE=',0,1,'No descriptions'),(5,'thinh97','TnR0dW5nQDE=',0,1,'No descriptions'),(6,'tung1','TnR0dW5nQDE=',0,1,'No descriptions'),(7,'tung2','TnR0dW5nQDE=',0,1,'No descriptions'),(8,'tung3','TnR0dW5nQDE=',0,1,'No descriptions'),(9,'tung4','TnR0dW5nQDE=',0,1,'No descriptions');
+INSERT INTO `Account` VALUES (2,'nttung291','TnR0dW5nQDEyMw==',0,1,'No descriptions'),(3,'nttung','TnR0dW5nQDE=',0,1,'No descriptions'),(4,'tungnt','TnR0dW5nQDE=',0,1,'No descriptions'),(5,'thinh97','TnR0dW5nQDE=',0,1,'No descriptions'),(6,'tung1','TnR0dW5nQDE=',0,1,'No descriptions'),(7,'tung2','TnR0dW5nQDE=',0,1,'No descriptions'),(8,'tung3','TnR0dW5nQDE=',0,1,'No descriptions'),(9,'tung4','TnR0dW5nQDE=',0,1,'No descriptions'),(10,'tung5','TnR0dW5nQDE=',0,1,'No descriptions'),(11,'tung6','TnR0dW5nQDE=',0,1,'No descriptions'),(12,'tung7','TnR0dW5nQDE=',0,1,'No descriptions'),(13,'tung8','TnR0dW5nQDE=',0,1,'No descriptions'),(14,'tung9','TnR0dW5nQDE=',0,1,'No descriptions'),(15,'tung10','TnR0dW5nQDE=',0,0,'No descriptions');
 /*!40000 ALTER TABLE `Account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `CompulsoryContract` (
   `Description` varchar(255) DEFAULT NULL,
   `StartedDate` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `CompulsoryContract` (
 
 LOCK TABLES `CompulsoryContract` WRITE;
 /*!40000 ALTER TABLE `CompulsoryContract` DISABLE KEYS */;
-INSERT INTO `CompulsoryContract` VALUES (2,'1010101010',2,'No description','30/03/2019'),(3,'1010101010',2,'No description','01/04/2019'),(4,'1010101010',0,'No description',''),(5,'1010101010',1,'No description','01/04/2019'),(6,'1010101010',2,'No description',NULL),(7,'1010101010',0,'No description',NULL),(8,'1010101010',0,'No description',NULL),(9,'1010101010',1,'No description','01/04/2019');
+INSERT INTO `CompulsoryContract` VALUES (1,'1010101010',0,'No description',NULL),(2,'1010101010',0,'No description',NULL);
 /*!40000 ALTER TABLE `CompulsoryContract` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +102,7 @@ CREATE TABLE `Customer` (
   CONSTRAINT `FKCustomer95429` FOREIGN KEY (`AccountId`) REFERENCES `Account` (`Id`),
   CONSTRAINT `FKCustomer987907` FOREIGN KEY (`VoluntaryContractId`) REFERENCES `VoluntaryContract` (`Id`),
   CONSTRAINT `FKCustomer988461` FOREIGN KEY (`CompulsoryContractId`) REFERENCES `CompulsoryContract` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,7 +111,7 @@ CREATE TABLE `Customer` (
 
 LOCK TABLES `Customer` WRITE;
 /*!40000 ALTER TABLE `Customer` DISABLE KEYS */;
-INSERT INTO `Customer` VALUES (2,10,NULL,2,4,'Tung','','1/1/1940','123456789','1010101010','nttung291@gmail.com','84962962997',0,'1010101010101',5000000),(4,10,NULL,3,5,'Thinh','','1/1/1940','123456789','1010101010','nt@gmail.com','84213123',0,'1010101010101',4321320),(5,10,NULL,4,6,'Tung','','1/1/1940','123456789','1010101010','nt@gmail.com','84123123123',0,'1010101010101',4141410),(7,10,NULL,5,8,'Tung Nguyen','','1/1/1940','123456789','1010101010','nt@gmail.com','841231231',0,'1010101010101',4444440),(8,10,NULL,9,7,'Tung Hai','','1/1/1940','123456789','1010101010','qeqwe@gmail.com','8412312312',0,'1010101010101',5555560);
+INSERT INTO `Customer` VALUES (1,10,NULL,1,6,'Tung Nguyen','','1/1/1940','123456789','1010101010','nttung@gmail.com','841231231',0,'1010101010101',5555560),(2,10,NULL,2,7,'Tung Nguyen','','1/1/1940','123456789','1010101010','nt@gmail.com','8412312312',0,'1010101010101',6666670),(3,10,1,NULL,8,'Tung Nguyen','','1/1/1940','123456789','1010101010','nt@gmail.com','84213123',0,'1010101010101',4444440);
 /*!40000 ALTER TABLE `Customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +153,7 @@ CREATE TABLE `VoluntaryContract` (
   `Description` varchar(255) DEFAULT NULL,
   `StartedDate` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,6 +162,7 @@ CREATE TABLE `VoluntaryContract` (
 
 LOCK TABLES `VoluntaryContract` WRITE;
 /*!40000 ALTER TABLE `VoluntaryContract` DISABLE KEYS */;
+INSERT INTO `VoluntaryContract` VALUES (1,0,'No description',NULL);
 /*!40000 ALTER TABLE `VoluntaryContract` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -174,4 +175,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-01 18:16:55
+-- Dump completed on 2019-04-21 18:34:56

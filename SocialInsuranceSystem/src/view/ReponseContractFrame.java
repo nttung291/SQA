@@ -47,31 +47,45 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
     }
     
     private void initTableData() {
-        DefaultTableModel dm = (DefaultTableModel) tb_customer.getModel();
-        Vector row = new Vector();
-        row.add(customer.name);
-        if (customer.sex) row.add("Male");
-        else row.add("Female");
-        row.add(customer.dob);
-        row.add(customer.idNumber);
-        row.add(customer.socialInsuranceNo);
-        row.add(customer.email);
-        row.add(customer.phoneNo);
-        row.add(customer.hometown.name);
-        row.add(customer.taxCode);
+        lbName.setText(customer.name);
+        if (customer.sex) lbGender.setText("Male");
+        else lbGender.setText("Female");
+        lbDob.setText(customer.dob);
+        lbIdNum.setText(customer.idNumber);
+        lbSocialNum.setText(customer.socialInsuranceNo);
+        lbEmail.setText(customer.email);
+        lbPhone.setText(customer.phoneNo);
+        lbHometown.setText(customer.hometown.name);
+        lbTaxCode.setText(customer.taxCode);
         if (customer.compulsoryContract != null) {
-            row.add(customer.compulsoryContract.companyCode);
-            row.add(customer.compulsoryContract.description);
+            lbComCode.setText(customer.compulsoryContract.companyCode);
+            lbDes.setText(customer.compulsoryContract.description);
         } else {
-            row.add("No Company Code");
-            row.add(customer.voluntaryContract.description);
+            lbComCode.setText("No Company Code");
+            lbDes.setText(customer.voluntaryContract.description);
         }
-        row.add(customer.salary);
-        if (customer.paymentDuration == 0) row.add("Month");
-        else row.add("Year");
-        row.add(String.valueOf((customer.salary * 25.5/100)));
-        dm.insertRow(0,row);
-        tb_customer.setModel(dm);
+        try {
+            // The comma in the format specifier does the trick
+            long longsalary = (long) customer.salary;
+            String salary = String.format("%,d", longsalary);
+            lbSalary.setText(salary);
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormat");
+        }
+        
+        if (customer.paymentDuration == 0) lbDuration.setText("Month");
+        else lbDuration.setText("Year");
+        
+         try {
+            // The comma in the format specifier does the trick
+            long longsalary = (long) (customer.salary * 25.5/100);
+            String salary = String.format("%,d", longsalary);
+            lbCost.setText(salary);
+           
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormat");
+        }
+       
     }
     
     /**
@@ -81,11 +95,12 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         initComponents();
         setLocationRelativeTo(null); 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setTitle("Reponse Contract");
     }
     
     public void initData() {
       if (this.getCustomer() != null) {
-        initTableData();
+         initTableData();
       }
     }
     
@@ -99,11 +114,40 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel16 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_customer = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        lbTaxCode = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lbIdNum = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lbDuration = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbCost = new javax.swing.JLabel();
+        lbName = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        lbSocialNum = new javax.swing.JLabel();
+        lbPhone = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lbGender = new javax.swing.JLabel();
+        lbComCode = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lbDob = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lbHometown = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lbSalary = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lbDes = new javax.swing.JLabel();
+
+        jLabel16.setText("jLabel16");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,62 +165,199 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
             }
         });
 
-        tb_customer.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Company Code", "Desciptions", "Salary", "Insurance Duration", "Cost"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tb_customer);
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Confirm Contract");
+
+        lbTaxCode.setText("123123123");
+
+        jLabel12.setText("Tax Code :");
+
+        lbIdNum.setText("061092303");
+
+        jLabel7.setText("ID Number :");
+
+        jLabel9.setText("Email :");
+
+        lbEmail.setText("nttung291@gmail.com");
+
+        jLabel13.setText("Insurance Duration :");
+
+        lbDuration.setText("Month");
+
+        jLabel2.setText("Cost of insurance :");
+
+        lbCost.setText("0");
+
+        lbName.setText("Tung Nguyen");
+
+        jLabel3.setText("Name :");
+
+        jLabel8.setText("Social Insurance Number :");
+
+        lbSocialNum.setText("10120301203");
+
+        lbPhone.setText("84962962997");
+
+        jLabel10.setText("Phone Number :");
+
+        jLabel14.setText("Company Code :");
+
+        lbGender.setText("Male");
+
+        lbComCode.setText("00123123");
+
+        jLabel4.setText("Gender :");
+
+        jLabel6.setText("Date of birth :");
+
+        lbDob.setText("29/01/1997");
+
+        jLabel11.setText("Hometown :");
+
+        lbHometown.setText("Yen Bai");
+
+        jLabel5.setText("Salary: ");
+
+        lbSalary.setText("0");
+
+        jLabel15.setText("Contract Description :");
+
+        lbDes.setText("No descriptions");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(77, 77, 77)
+                .addComponent(jButton2)
+                .addGap(251, 251, 251))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 405, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(316, 316, 316)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(350, 350, 350))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(77, 77, 77)
-                                .addComponent(jButton2)
-                                .addGap(298, 298, 298))))))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(85, 85, 85)
+                                .addComponent(lbSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel15)
+                                .addGap(51, 51, 51)
+                                .addComponent(lbDes, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(218, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lbIdNum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lbDob, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                                    .addGap(6, 6, 6))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbComCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(6, 6, 6)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel2))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(lbHometown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbTaxCode, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbDuration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbCost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbSocialNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGap(15, 15, 15)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addGap(98, 98, 98)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel4)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel6)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel7)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel9)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel14)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lbSalary)
+                    .addComponent(jLabel15)
+                    .addComponent(lbDes))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(75, 75, 75))
+                .addGap(44, 44, 44))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(164, 164, 164)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(lbName)
+                        .addComponent(lbSocialNum))
+                    .addGap(29, 29, 29)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel10)
+                        .addComponent(lbGender)
+                        .addComponent(lbPhone))
+                    .addGap(29, 29, 29)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(lbDob)
+                        .addComponent(lbHometown))
+                    .addGap(29, 29, 29)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(lbIdNum)
+                        .addComponent(lbTaxCode))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(29, 29, 29)
+                            .addComponent(lbEmail))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel13)
+                                .addComponent(lbDuration))))
+                    .addGap(29, 29, 29)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbComCode)
+                        .addComponent(jLabel2)
+                        .addComponent(lbCost))
+                    .addContainerGap(165, Short.MAX_VALUE)))
         );
 
         pack();
@@ -223,6 +404,18 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ReponseContractFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -371,8 +564,35 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tb_customer;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbComCode;
+    private javax.swing.JLabel lbCost;
+    private javax.swing.JLabel lbDes;
+    private javax.swing.JLabel lbDob;
+    private javax.swing.JLabel lbDuration;
+    private javax.swing.JLabel lbEmail;
+    private javax.swing.JLabel lbGender;
+    private javax.swing.JLabel lbHometown;
+    private javax.swing.JLabel lbIdNum;
+    private javax.swing.JLabel lbName;
+    private javax.swing.JLabel lbPhone;
+    private javax.swing.JLabel lbSalary;
+    private javax.swing.JLabel lbSocialNum;
+    private javax.swing.JLabel lbTaxCode;
     // End of variables declaration//GEN-END:variables
 
     @Override

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import model.Account;
 import model.CompulsoryContract;
 import model.Customer;
@@ -26,6 +27,7 @@ import model.VoluntaryContract;
  * @author nttungg
  */
 public class UpdateContractFrame extends javax.swing.JFrame {
+  
     private Customer customer;
     /**
      * Creates new form RegisterContractFrame
@@ -34,6 +36,7 @@ public class UpdateContractFrame extends javax.swing.JFrame {
         initComponents();
         Connection.createConnection();
         setLocationRelativeTo(null); 
+        this.setTitle("Update Contract");
     }
 
     public void setCustomer(Customer customer) {
@@ -42,6 +45,18 @@ public class UpdateContractFrame extends javax.swing.JFrame {
 
     public Customer getCustomer() {
         return customer;
+    }
+    
+    UIManager um = new UIManager();
+    private void showError(String message) {
+        um.put("OptionPane.messageForeground", Color.red);
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private int showSuccess(String message) {
+        um.put("OptionPane.messageForeground", Color.BLUE);
+        int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
+        return result;
     }
     
     /**
@@ -74,8 +89,6 @@ public class UpdateContractFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         cbPaymentDuration = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        lbMessage = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         tfCompany = new javax.swing.JTextField();
         lb_company = new javax.swing.JLabel();
@@ -140,11 +153,6 @@ public class UpdateContractFrame extends javax.swing.JFrame {
 
         cbPaymentDuration.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Month", "Year", " " }));
 
-        jLabel12.setText("Message :");
-
-        lbMessage.setText("No Message");
-        lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +162,12 @@ public class UpdateContractFrame extends javax.swing.JFrame {
 
         lb_company.setText("Company code :");
 
+        tfSalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfSalaryKeyReleased(evt);
+            }
+        });
+
         jLabel3.setText("Salary :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,98 +175,73 @@ public class UpdateContractFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(291, 291, 291))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(100, 100, 100)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lb_company)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel9))
+                            .addGap(19, 19, 19)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tfCompany, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                                .addComponent(tfSalary)
+                                .addComponent(cbCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(362, 362, 362))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfEmail)
-                                .addGap(135, 135, 135))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
+                        .addGap(220, 220, 220)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(91, 91, 91)
+                                .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbPaymentDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(64, 64, 64)
-                                .addComponent(jButton2))
-                            .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(319, 319, 319)
-                    .addComponent(jLabel11)
-                    .addGap(328, 328, 328))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(144, 144, 144)
-                            .addComponent(lb_company)
-                            .addGap(19, 19, 19)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(tfCompany)
-                            .addGap(134, 134, 134))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(135, 135, 135)))))
+                                .addComponent(cbPaymentDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel11)
-                .addGap(59, 59, 59)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lb_company))
-                .addGap(13, 13, 13)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cbCities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(tfPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(cbPaymentDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,29 +291,29 @@ public class UpdateContractFrame extends javax.swing.JFrame {
         try {
             salary = Float.parseFloat(tfSalary.getText());
         } catch (Exception e) {
-            lbMessage.setText("Salary is wrong format");
-            lbMessage.setForeground(Color.red);
+            showError("Salary is wrong format");
+           
             return false;
         }
        
         if (hometown.section == 1 && (salary < 4472600 || salary > 29800000)){
-            lbMessage.setForeground(Color.RED);
-            lbMessage.setText("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
+            
+            showError("Salary field must in section 1 range from 4.472.600 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 2 && (salary < 3969700 || salary > 29800000)) {
-            lbMessage.setForeground(Color.RED);
-            lbMessage.setText("Salary field must in section 2 range from 3.969.700 dong/month to 29.800.000 dong/month, please check your input again");
+           
+            showError("Salary field must in section 2 range from 3.969.700 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 3 && (salary < 3477500 || salary > 29800000)) {
-            lbMessage.setForeground(Color.RED);
-            lbMessage.setText("Salary field must in section 2 range from 3.477.500 dong/month to 29.800.000 dong/month, please check your input again");
+            
+            showError("Salary field must in section 2 range from 3.477.500 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         if (hometown.section == 4 && (salary < 3124400 || salary > 29800000)) {
-            lbMessage.setForeground(Color.RED);
-            lbMessage.setText("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
+           
+            showError("Salary field must in section 2 range from 3.124.400 dong/month to 29.800.000 dong/month, please check your input again");
             return false;
         }
         return true;
@@ -375,25 +364,29 @@ public class UpdateContractFrame extends javax.swing.JFrame {
             }
         }
         if (row != 0 && row != -1) {
-            lbMessage.setText("Your request is being processed. Please wait 1-2 days for your confirmation. Thank you for using our insurance service!");
-            lbMessage.setForeground(Color.BLACK);
+            if (showSuccess("Your request is being processed. Please wait 1-2 days for your confirmation. Thank you for using our insurance service!") == JOptionPane.OK_OPTION) {
+                this.setVisible(false);
+                CustomerMain customerMain = new CustomerMain();
+                customerMain.setAcc(this.getCustomer().account);
+                customerMain.setVisible(true);
+            }
         }
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (!checkEmptyBlank()) {
-            lbMessage.setText("Informations can not be blank");
-            lbMessage.setForeground(Color.RED);
+            showError("Informations can not be blank");
+           
         } else if (!checkPhoneNumber()){
-             lbMessage.setText("Phone Number is wrong format");
-             lbMessage.setForeground(Color.RED);
+             showError("Phone Number is wrong format");
+           
         } else if (!checkCompany()) {
-             lbMessage.setText("Company is wrong format");     
-             lbMessage.setForeground(Color.RED);
+             showError("Company is wrong format");     
+            
         } else if(!checkEmail(tfEmail.getText())){
-            lbMessage.setText("Email is wrong format");     
-            lbMessage.setForeground(Color.RED);
+            showError("Email is wrong format");     
+            
         } else if (!checkSalary()) {
             
         } else {
@@ -405,9 +398,9 @@ public class UpdateContractFrame extends javax.swing.JFrame {
                 insCustomer.hometown = city;
                 insCustomer.phoneNo = tfPhoneNumber.getText();
                 insCustomer.email = tfEmail.getText();
-                insCustomer.salary = Float.parseFloat(tfSalary.getText());
+                String salary = tfSalary.getText().replaceAll("[,]","");
+                insCustomer.salary = Float.parseFloat(salary);
   
-                
                 updateContract(insCustomer);
             }
         }
@@ -421,6 +414,16 @@ public class UpdateContractFrame extends javax.swing.JFrame {
         customerMain.setAcc(this.getCustomer().account);
         customerMain.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tfSalaryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSalaryKeyReleased
+        try {
+            String result = tfSalary.getText().replaceAll("[,]","");
+            String salary = String.format("%,d", Long.parseLong(result));
+            tfSalary.setText(salary);
+        } catch (Exception e) {
+           
+        }
+    }//GEN-LAST:event_tfSalaryKeyReleased
 
     /**
      * @param args the command line arguments
@@ -481,7 +484,6 @@ public class UpdateContractFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
@@ -495,7 +497,6 @@ public class UpdateContractFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel lbMessage;
     private javax.swing.JLabel lb_company;
     private javax.swing.JTextField tfCompany;
     private javax.swing.JTextField tfEmail;

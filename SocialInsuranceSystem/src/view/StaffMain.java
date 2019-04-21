@@ -5,6 +5,7 @@
  */
 package view;
 
+import dao.Connection;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -20,6 +21,8 @@ public class StaffMain extends javax.swing.JFrame {
     public StaffMain() {
         initComponents();
         setLocationRelativeTo(null); 
+        Connection.createConnection();
+        this.setTitle("Staff Main");
     }
 
     /**

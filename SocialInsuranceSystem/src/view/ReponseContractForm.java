@@ -29,6 +29,7 @@ public class ReponseContractForm extends javax.swing.JFrame {
     public ReponseContractForm() {
         initComponents();
         setLocationRelativeTo(null); 
+        this.setTitle("Reponse Contract");
     }
 
     /**

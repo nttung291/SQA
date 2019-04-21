@@ -11,7 +11,9 @@ import dao.CustomerDAO;
 import dao.VoluntaryContractDAO;
 import java.awt.Color;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import model.CompulsoryContract;
 import model.Customer;
@@ -22,6 +24,7 @@ import model.VoluntaryContract;
  * @author nttungg
  */
 public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
+    UIManager um = new UIManager();
     private Customer customer;
 
     public Customer getCustomer() {
@@ -32,26 +35,6 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
         this.customer = customer;
     }
     
-    private void initTableData() {
-        DefaultTableModel dm = (DefaultTableModel) tb_customer.getModel();
-        Vector row = new Vector();
-        row.add(customer.name);
-        if (customer.sex) row.add("Male");
-        else row.add("Female");
-        row.add(customer.dob);
-        row.add(customer.idNumber);
-        row.add(customer.socialInsuranceNo);
-        row.add(customer.email);
-        row.add(customer.phoneNo);
-        row.add(customer.hometown.name);
-        row.add(customer.taxCode);
-        row.add(customer.salary);
-        if (customer.paymentDuration == 0) row.add("Month");
-        else row.add("Year");
-        dm.insertRow(0,row);
-        tb_customer.setModel(dm);
-    }
-    
     /**
      * Creates new form ConfirmCompulsoryFrame
      */
@@ -59,13 +42,51 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
         initComponents();
         Connection.createConnection();
         setLocationRelativeTo(null); 
+        this.setTitle("Confirm Contract Register");
     }
     
     public void initData() {
-      if (this.getCustomer() != null) {
-        lb_cost.setText(String.valueOf(customer.salary * 22/100));
-        initTableData();
-      }
+        if (this.getCustomer() != null) {
+            try {
+                // The comma in the format specifier does the trick
+                long longsalary = (long) (customer.salary * 22/100);
+                String salary = String.format("%,d", longsalary);
+                lbCost.setText(salary + " VND");
+
+            } catch (NumberFormatException e) {
+                System.out.println("NumberFormat");
+            }
+            lbName.setText(customer.name);
+            lbDob.setText(customer.dob);
+            if (customer.paymentDuration == 0) {
+               jLabel23.setText("Month");
+            } else {
+                jLabel23.setText("Year");
+            }
+            jLabel18.setText(customer.email);
+             if (customer.sex) {
+               jLabel15.setText("Male");
+            } else {
+                jLabel15.setText("Female");
+            }
+            jLabel22.setText(customer.taxCode);
+            jLabel20.setText(customer.phoneNo);
+            jLabel21.setText(customer.hometown.name);
+            jLabel17.setText(customer.idNumber);
+            jLabel19.setText(customer.socialInsuranceNo);
+        }
+      
+    }
+    
+    private void showError(String message) {
+        um.put("OptionPane.messageForeground", Color.red);
+        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+    }
+    
+     private int showSuccess(String message) {
+        um.put("OptionPane.messageForeground", Color.BLUE);
+        int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
+        return result;
     }
    
     /**
@@ -79,13 +100,29 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tb_customer = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lb_cost = new javax.swing.JLabel();
-        lbMessage = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbCost = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        lbName = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lbDob = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,92 +140,160 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
             }
         });
 
-        tb_customer.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Name", "Gender", "Date of birth", "ID Number", "Social Insurance Number", "Email", "Phone ", "Hometown", "Tax Code", "Salary", "Insurance Duration"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tb_customer);
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Confirm Contract");
 
         jLabel2.setText("Cost of insurance :");
 
-        lb_cost.setText("0");
+        lbCost.setText("0");
 
-        lbMessage.setText("No message");
-        lbMessage.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel3.setText("Name :");
 
-        jLabel5.setText("Message:");
+        jLabel4.setText("Gender :");
+
+        jLabel6.setText("Date of birth :");
+
+        jLabel7.setText("ID Number :");
+
+        jLabel8.setText("Social Insurance Number :");
+
+        jLabel9.setText("Email :");
+
+        jLabel10.setText("Phone Number :");
+
+        jLabel11.setText("Hometown :");
+
+        jLabel12.setText("Tax Code :");
+
+        jLabel13.setText("Insurance Duration :");
+
+        lbName.setText("Tung Nguyen");
+
+        jLabel15.setText("Male");
+
+        lbDob.setText("29/01/1997");
+
+        jLabel17.setText("061092303");
+
+        jLabel18.setText("nttung291@gmail.com");
+
+        jLabel19.setText("10120301203");
+
+        jLabel20.setText("84962962997");
+
+        jLabel21.setText("Yen Bai");
+
+        jLabel22.setText("123123123");
+
+        jLabel23.setText("Month");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(238, 238, 238)
-                        .addComponent(jButton1)
-                        .addGap(77, 77, 77)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(30, 30, 30)
-                        .addComponent(lbMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(lb_cost, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 41, Short.MAX_VALUE))
+                        .addComponent(lbCost, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(362, 362, 362)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(273, 273, 273)
+                        .addComponent(jButton1)
+                        .addGap(146, 146, 146)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(96, 96, 96)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
+                .addComponent(jLabel1)
+                .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lb_cost))
-                .addGap(35, 35, 35)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8)
+                    .addComponent(lbName)
+                    .addComponent(jLabel19))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel20))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel11)
+                    .addComponent(lbDob)
+                    .addComponent(jLabel21))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel22))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel18)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel23))))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbCost))
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(73, 73, 73))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,13 +310,18 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
             inCustomer.voluntaryContract = inseredContract;
             result = CustomerDAO.inserVoluntaryCustomer(inCustomer);
         }
+        int confirm;
         if (result != 0 && result != -1) {
-            lbMessage.setForeground(Color.BLACK);
-            lbMessage.setText("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
+            if (showSuccess("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!") == JOptionPane.OK_OPTION) {
+                this.setVisible(false);
+                CustomerMain customerMain = new CustomerMain();
+                customerMain.setAcc(this.getCustomer().account);
+                customerMain.setVisible(true);
+            }
         } else {
-            lbMessage.setText("Register Failed!");
-            lbMessage.setForeground(Color.RED);
+            showError("Register Failed!");
         } 
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -261,11 +371,27 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbMessage;
-    private javax.swing.JLabel lb_cost;
-    private javax.swing.JTable tb_customer;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbCost;
+    private javax.swing.JLabel lbDob;
+    private javax.swing.JLabel lbName;
     // End of variables declaration//GEN-END:variables
 }
