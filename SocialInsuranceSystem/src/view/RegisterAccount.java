@@ -70,7 +70,7 @@ public class RegisterAccount extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
     }
     
-     private int showSuccess(String message) {
+    private int showSuccess(String message) {
         um.put("OptionPane.messageForeground", Color.BLUE);
         int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
         return result;
@@ -226,25 +226,22 @@ public class RegisterAccount extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!checkEmptyBlank()) {
-            showError("Informations can not be blank");
+            showError("Informations cannot be blank, please fill enough informations");
+        }else if (!checkValidUsername()) {
+            showError("The user name field must not contain any special character, please check your input again");
+        }else if (!checkValidPassword()) {
+            showError("This password field must contain at least one number, special character such as (!,#,$,^,&,..) and not enough at least 8 characters, please check your input again");
           
-        } else if (!checkConfirmPassword()) {
-            showError("Password does not match");
-          
-        } else if (!checkValidPassword()) {
-            showError("<html> Password has least one number, one lowercase characters, one uppercase characters  and a special character such as (!,#,$,^,&,..) and at least 8 characters </html>");
-          
-        } else if (!checkValidUsername()) {
-            showError("Username can not be special characters");
-        }
-        else {
+        }else if (!checkConfirmPassword()) {
+            showError("Two passwords are not exactly same, please check your input again");
+        } else {
             try {
                 int result = AccountCtr.registerAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()), cb_role.getSelectedIndex(), 0, "No descriptions");
                  if (result == -1) {
-                    showError("Register Failed");
-         
+                    showError("Register has failed by some reasons, please check your internet or database connection.");
+
                  } else if (result == -2) {
-                    showError("Account has already");
+                    showError("Account has existed already, please change your username!");
                    
                  } else {
                     if (showSuccess("Register Successed") == JOptionPane.OK_OPTION) {

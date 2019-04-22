@@ -183,7 +183,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         if (!checkEmptyBlank()) {
-            showError("Informations can not be blank");
+            showError("Informations cannot be blank, please fill enough informations");
         } else {
             try {
                 int result = AccountCtr.loginAccount(tfUsername.getText(), EncodeDecode.encodeString(tfPassword.getText()));
@@ -203,9 +203,9 @@ public class LoginFrame extends javax.swing.JFrame {
                     new AdminMain().setVisible(true);
                     this.setVisible(false);
                 } else if (result == -1) {
-                    showError("Account has not registed");
+                    showError("Account has not registed, please sign-up to be able to login");
                 } else if (result == -2) {
-                    showError("Wrong password");
+                    showError("Password is incorrect, please check your password again!");
                 }
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(RegisterAccount.class.getName()).log(Level.SEVERE, null, ex);
