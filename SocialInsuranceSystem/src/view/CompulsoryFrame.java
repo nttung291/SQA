@@ -187,7 +187,9 @@ public class CompulsoryFrame extends javax.swing.JFrame {
     }
     
     private void showError(String message) {
-        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+        JLabel l = new JLabel(message);
+        l.setForeground(Color.red);
+        JOptionPane.showMessageDialog(null, l, "Message", JOptionPane.ERROR_MESSAGE);
     }
 
     public ConfirmCompulsoryFrame getConfirmCompulsoryFrame() {

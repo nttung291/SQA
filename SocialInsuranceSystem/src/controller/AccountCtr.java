@@ -16,7 +16,7 @@ import model.Account;
  */
 public class AccountCtr {
     
-    public static boolean checkUserByName(String username) {
+    public static boolean checkUserByName(String username) throws Exception{
        ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
        if (allAccount.size() > 0) {
            for (int i=0;i<allAccount.size();i++){
@@ -29,7 +29,7 @@ public class AccountCtr {
        return false;
     }
     
-    public static ArrayList<Account> getAllAccountUnstate() {
+    public static ArrayList<Account> getAllAccountUnstate() throws Exception{
         ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
         ArrayList<Account> unStateAccount = new ArrayList<>();
         for (int i=0; i< allAccount.size(); i++) {
@@ -40,7 +40,7 @@ public class AccountCtr {
         return unStateAccount;
     }
     
-    public static int loginAccount(String username, String password) {
+    public static int loginAccount(String username, String password) throws Exception{
        ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
        if (allAccount.size() > 0) {
            for (int i=0;i<allAccount.size();i++){
@@ -56,7 +56,7 @@ public class AccountCtr {
        }
     }
     
-    public static Account getAccount(String username, String password) {
+    public static Account getAccount(String username, String password) throws Exception {
         ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
           if (allAccount.size() > 0) {
            for (int i=0;i<allAccount.size();i++){
@@ -72,7 +72,7 @@ public class AccountCtr {
         }
     }
     
-    public static int registerAccount(String username, String password, int role, int state, String description) {
+    public static int registerAccount(String username, String password, int role, int state, String description) throws Exception{
         if (!checkUserByName(username)) {
             return AccountDAO.insertAccount(new Account(username, password, role, 0, description));
         } else {
@@ -80,7 +80,7 @@ public class AccountCtr {
         }
     }
     
-    public static int updateAccount(Account account) {
+    public static int updateAccount(Account account) throws Exception{
         return AccountDAO.updateAccount(account);
     }
 }

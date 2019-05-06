@@ -12,6 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import model.Account;
@@ -22,7 +23,7 @@ import utils.EncodeDecode;
  * @author nttungg
  */
 public class LoginFrame extends javax.swing.JFrame {
-    UIManager um = new UIManager();
+   
     /**
      * Creates new form LoginFrame
      */
@@ -47,13 +48,15 @@ public class LoginFrame extends javax.swing.JFrame {
     }
     
     private void showError(String message) {
-        um.put("OptionPane.messageForeground", Color.red);
-        JOptionPane.showMessageDialog(null, message, "Message", JOptionPane.ERROR_MESSAGE);
+        JLabel l = new JLabel(message);
+        l.setForeground(Color.red);
+        JOptionPane.showMessageDialog(null, l, "Message", JOptionPane.ERROR_MESSAGE);
     }
     
      private int showSuccess(String message) {
-        um.put("OptionPane.messageForeground", Color.BLUE);
-        int result = JOptionPane.showOptionDialog(null, message, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
+        JLabel l = new JLabel(message);
+        l.setForeground(Color.red);
+        int result = JOptionPane.showOptionDialog(null, l, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
         return result;
     }
 
