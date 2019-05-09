@@ -409,20 +409,20 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
     public void declineRegister(int row) {
         if (customer.compulsoryContract != null) {
                 CompulsoryContract compulsoryContract = customer.compulsoryContract;
-                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer.id);
                 int deleteCon = 0;
                 if (deleteCus == 1){
-                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract);
+                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract.id);
                 }
                 if (deleteCon == 1) {
                     row = 1;
                 }
             } else if (customer.voluntaryContract != null) {
                 VoluntaryContract voluntaryContract = customer.voluntaryContract;
-                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer.id);
                 int deleteCon = 0;
                 if (deleteCus == 1){
-                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract);
+                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract.id);
                 }
                 if (deleteCus == 1) {
                     row = 1;
@@ -463,20 +463,20 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
     public void acceptCancel(int row) {
          if (customer.compulsoryContract != null) {
                 CompulsoryContract compulsoryContract = customer.compulsoryContract;
-                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer.id);
                 int deleteCon = 0;
                 if (deleteCus == 1){
-                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract);
+                    deleteCon = CompulsoryContractDAO.deleteCompulsoryContractByID(compulsoryContract.id);
                 }
                 if (deleteCon == 1) {
                     row = 1;
                 }
             } else if (customer.voluntaryContract != null) {
                 VoluntaryContract voluntaryContract = customer.voluntaryContract;
-                int deleteCus = CustomerDAO.deleteCustomerByID(customer);
+                int deleteCus = CustomerDAO.deleteCustomerByID(customer.id);
                 int deleteCon = 0;
                 if (deleteCus == 1){
-                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract);
+                    deleteCon = VoluntaryContractDAO.deleteVoluntaryContractByID(voluntaryContract.id);
                 }
                 if (deleteCus == 1) {
                     row = 1;

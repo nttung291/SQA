@@ -108,13 +108,13 @@ public class CompulsoryContractDAO {
         return -1;
     }
       
-     public static int deleteCompulsoryContractByID(CompulsoryContract compulsoryContract) {
+     public static int deleteCompulsoryContractByID(int id) {
         String sql = "DELETE FROM CompulsoryContract Where Id = ?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, compulsoryContract.id);
-            ps.execute();
-            return 1;
+            ps.setInt(1, id);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
         }catch(Exception e){
             e.printStackTrace();
         }

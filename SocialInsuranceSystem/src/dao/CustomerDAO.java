@@ -69,8 +69,8 @@ public class CustomerDAO {
             ps.setFloat(12, customer.salary);
             ps.setInt(13, customer.compulsoryContract.id);
             ps.setInt(14, customer.id);
-            ps.executeUpdate();
-            return 1;
+            int result=ps.executeUpdate();
+            return result;
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -97,36 +97,8 @@ public class CustomerDAO {
             ps.setFloat(12, customer.salary);
             ps.setInt(13, customer.voluntaryContract.id);
             ps.setInt(14, customer.id);
-            ps.executeUpdate();
-            return 1;
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return -1;
-    }
-    
-
-    public static int insertCustomer(Customer customer){
-        String sql = "INSERT INTO Customer(HometownId,VoluntaryContractId, CompulsoryContractId, AccountId,Name, Sex, Dob,IdNumber,SocialInsuranceNo"
-                + ",Email,PhoneNo,PaymentDuration,TaxCode,Salary) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, customer.hometown.ID);
-            ps.setInt(13, customer.voluntaryContract.id);
-            ps.setInt(14, customer.compulsoryContract.id);
-            ps.setInt(2, customer.account.id);
-            ps.setString(3, customer.name);
-            ps.setBoolean(4, customer.sex);
-            ps.setString(5, customer.dob);
-            ps.setString(6, customer.idNumber);
-            ps.setString(7, customer.socialInsuranceNo);
-            ps.setString(8, customer.email);
-            ps.setString(9, customer.phoneNo);
-            ps.setInt(10, customer.paymentDuration);
-            ps.setString(11, customer.taxCode);
-            ps.setFloat(12, customer.salary);
-            int rowCount=ps.executeUpdate();
-            return rowCount;
+            int result=ps.executeUpdate();
+            return result;
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -183,13 +155,13 @@ public class CustomerDAO {
         return -1;
     }
     
-      public static int deleteCustomerByID(Customer customer) {
+      public static int deleteCustomerByID(int id) {
         String sql = "DELETE FROM Customer Where Id = ?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, customer.id);
-            ps.execute();
-            return 1;
+            ps.setInt(1, id);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
         }catch(Exception e){
             e.printStackTrace();
         }

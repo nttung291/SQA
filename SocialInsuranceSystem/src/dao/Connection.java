@@ -32,14 +32,14 @@ public class Connection {
 //            }
 //        }
         if(connection == null){
-            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
-//            String dbUrl = "jdbc:mysql://localhost:3306/SocialInsuranceDB";
+//            String dbUrl = "jdbc:mysql://localhost:8889/SocialInsuranceDB";
+            String dbUrl = "jdbc:mysql://localhost:3306/SocialInsuranceDB";
             String dbClass = "com.mysql.jdbc.Driver";
 
             try {
                 Class.forName(dbClass);
-//                connection = DriverManager.getConnection (dbUrl, "root", "");
-                connection = DriverManager.getConnection (dbUrl, "root", "root");
+                connection = DriverManager.getConnection (dbUrl, "root", "");
+//                connection = DriverManager.getConnection (dbUrl, "root", "root");
             }catch(Exception e) {
                 e.printStackTrace();
                 int result = JOptionPane.showConfirmDialog(null, "No Internet", "Message", JOptionPane.PLAIN_MESSAGE);
@@ -51,6 +51,23 @@ public class Connection {
             connection.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+    }
+    public static int rollback(){
+        try{
+            connection.rollback();
+            return 1;
+        }catch(Exception e){
+            return -1;
+        }
+    }
+    
+    public static int disableAutoCommit(){
+        try{
+            connection.setAutoCommit(false);
+            return 1;
+        }catch(Exception e){
+            return -1;
         }
     }
 }

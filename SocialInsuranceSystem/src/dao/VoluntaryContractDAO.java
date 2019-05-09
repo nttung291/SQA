@@ -102,11 +102,11 @@ public class VoluntaryContractDAO {
         return -1;
     }
     
-      public static int deleteVoluntaryContractByID(VoluntaryContract voluntaryContract) {
+      public static int deleteVoluntaryContractByID(int id) {
         String sql = "DELETE FROM VoluntaryContract WHERE id = ?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, voluntaryContract.id);
+            ps.setInt(1,id);
             ps.execute();
             return 1;
         }catch(Exception e){

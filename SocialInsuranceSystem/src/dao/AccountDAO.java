@@ -70,43 +70,25 @@ public class AccountDAO extends Connection{
             ps.setInt(3, account.role);
             ps.setInt(4, account.state);
             ps.setString(5,account.description);
-            ps.executeUpdate();
-            return 1;
+            int rowCount=ps.executeUpdate();
+            return rowCount;
         }catch(Exception e){
             e.printStackTrace();
         }
         return -1;
     }
     
-    public static int deleteAllAccountByID(Account account) {
+    public static int deleteAccountByID(int id) {
         String sql = "DELETE FROM Account Where Id = ?";
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, account.id);
-            ps.execute();
-            return 1;
+            ps.setInt(1, id);
+            int rowCount=ps.executeUpdate();
+            return rowCount;
         }catch(Exception e){
             e.printStackTrace();
         }
         return -1;
-    }
-    
-    public static int rollback(){
-        try{
-            connection.rollback();
-            return 1;
-        }catch(Exception e){
-            return -1;
-        }
-    }
-    
-    public static int disableAutoCommit(){
-        try{
-            connection.setAutoCommit(false);
-            return 1;
-        }catch(Exception e){
-            return -1;
-        }
     }
     
     public static Account selectAccountByID(int id){

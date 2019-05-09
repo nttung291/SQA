@@ -57,7 +57,7 @@ public class HometownDAO {
         return null;
     }
     
-     public static int insertHometown(Hometown hometown){
+    public static int insertHometown(Hometown hometown){
         String sql = "INSERT INTO Hometown(Id,Name,Section) VALUES (?,?,?)";
         try{
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -71,5 +71,7 @@ public class HometownDAO {
         }
         return -1;
     }
+     
+     
 
 }

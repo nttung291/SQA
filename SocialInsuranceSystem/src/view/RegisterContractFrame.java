@@ -424,15 +424,13 @@ public class RegisterContractFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tfEmailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        if (!checkEmptyBlank()) {
+        if (!checkName()) {
+                    showError("Name is wrong format");
+        }else if (!checkEmptyBlank()) {
             showError("Informations can not be blank");
           
         } else if (!checkIDNumber()) {
-            showError("ID number is wrong format");
-           
-        } else if (!checkName()) {
-            showError("Name is wrong format");
+            showError("ID number is wrong format"); 
             
         } else if (!checkPhoneNumber()){
             showError("Phone Number is wrong format");

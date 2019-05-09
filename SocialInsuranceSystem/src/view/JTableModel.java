@@ -204,14 +204,14 @@ class ButtonEditor extends DefaultCellEditor {
         if (result == JOptionPane.OK_OPTION) {
             if (label == "Decline") {
                 try {
-                    int deleteresult =  AccountDAO.deleteAllAccountByID(selectedAccount);
+                    int deleteresult =  AccountDAO.deleteAccountByID(selectedAccount.id);
                     if (deleteresult == 1) {
                         stopCellEditing();
                         defaultTableModel.removeRow(affectedRow);
                         affectedRow = -1;
                     }
                 } catch(ArrayIndexOutOfBoundsException e) {
-                       
+
                 }
             } else if (label == "Accept") {
                 try {
