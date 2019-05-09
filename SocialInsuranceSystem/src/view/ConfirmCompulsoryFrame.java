@@ -187,7 +187,7 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
 
         lbDuration.setText("Month");
 
-        jLabel2.setText("Cost of insurance :");
+        jLabel2.setText("Cost of insurance (VND):");
 
         lbCost.setText("0");
 

@@ -146,7 +146,7 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Confirm Contract");
 
-        jLabel2.setText("Cost of insurance :");
+        jLabel2.setText("Cost of insurance(VND) :");
 
         lbCost.setText("0");
 
@@ -168,7 +168,7 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
 
         jLabel12.setText("Tax Code :");
 
-        jLabel13.setText("Insurance Duration :");
+        jLabel13.setText("Insurance Duration(VND) :");
 
         lbName.setText("Tung Nguyen");
 
@@ -195,7 +195,7 @@ public class ConfirmVoluntaryFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)

@@ -161,7 +161,7 @@ public class CancelContractFrame extends javax.swing.JFrame {
         taReason.setRows(5);
         jScrollPane3.setViewportView(taReason);
 
-        jLabel6.setText("Money :");
+        jLabel6.setText("Money (VND):");
 
         jLabel7.setText("0");
 
@@ -206,7 +206,9 @@ public class CancelContractFrame extends javax.swing.JFrame {
                                         .addComponent(cbCompany))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane3))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane3)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -225,10 +227,7 @@ public class CancelContractFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lbSIN))
                             .addComponent(cbAgree)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(334, 334, 334)
                         .addComponent(jLabel1)))

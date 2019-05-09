@@ -216,7 +216,7 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
 
         lbHometown.setText("Yen Bai");
 
-        jLabel5.setText("Salary: ");
+        jLabel5.setText("Salary(VND): ");
 
         lbSalary.setText("0");
 
@@ -250,13 +250,13 @@ public class ReponseContractFrame extends javax.swing.JFrame implements ReponseC
                             .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addGap(85, 85, 85)
+                                .addGap(51, 51, 51)
                                 .addComponent(lbSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel15)
-                                .addGap(51, 51, 51)
-                                .addComponent(lbDes, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addGap(45, 45, 45)
+                                .addComponent(lbDes, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)))))
+                .addGap(52, 52, 52))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(218, Short.MAX_VALUE)
