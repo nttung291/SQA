@@ -31,7 +31,6 @@ import utils.EncodeDecode;
  */
 public class RegisterAccount extends javax.swing.JFrame {
     private int role = 0;
-    private UIManager um = new UIManager();
 
     /**
      * Creates new form RegisterAccount

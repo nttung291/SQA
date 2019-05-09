@@ -55,7 +55,7 @@ public class LoginFrame extends javax.swing.JFrame {
     
      private int showSuccess(String message) {
         JLabel l = new JLabel(message);
-        l.setForeground(Color.red);
+        l.setForeground(Color.blue);
         int result = JOptionPane.showOptionDialog(null, l, "Message", JOptionPane.DEFAULT_OPTION ,JOptionPane.INFORMATION_MESSAGE, null,null,null);
         return result;
     }
@@ -198,11 +198,11 @@ public class LoginFrame extends javax.swing.JFrame {
                     this.setVisible(false);
 
                 } else if (result == 1) {
-                    showError("Login Successed");
+                    showSuccess("Login Successed");
                     new StaffMain().setVisible(true);
                     this.setVisible(false);
                 } else if (result == 2){
-                    showError("Login Successed");
+                    showSuccess("Login Successed");
                     new AdminMain().setVisible(true);
                     this.setVisible(false);
                 } else if (result == -1) {
