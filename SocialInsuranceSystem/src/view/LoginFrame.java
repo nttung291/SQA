@@ -14,6 +14,9 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import model.Account;
 import utils.EncodeDecode;
@@ -223,14 +226,42 @@ public class LoginFrame extends javax.swing.JFrame {
         startFrame.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-     private boolean checkEmptyBlank() {
+    public boolean checkEmptyBlank() {
         if (tfUsername.getText().equals("") || tfPassword.getText().equals("")) return false;
-        return true;
+            return true;
     }
-    
-    /**
-     * @param args the command line arguments
-     */
+        
+    public JButton getBtLogin() {
+        return btLogin;
+    }
+
+    public JButton getjButton1() {
+        return jButton1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPasswordField getTfPassword() {
+        return tfPassword;
+    }
+
+    public JTextField getTfUsername() {
+        return tfUsername;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLogin;

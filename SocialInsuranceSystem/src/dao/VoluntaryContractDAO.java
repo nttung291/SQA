@@ -107,8 +107,8 @@ public class VoluntaryContractDAO {
         try{  
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1,id);
-            ps.execute();
-            return 1;
+            int result=ps.executeUpdate();
+            return result;
         }catch(Exception e){
             e.printStackTrace();
         }
