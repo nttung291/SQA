@@ -323,6 +323,10 @@ public class ConfirmCompulsoryFrame extends javax.swing.JFrame {
         if (result != 0 && result != -1) {
            
             showSuccess("Your request is being validated. Please wait 1-2 days for validation. Thank you for register to our insurance service!");
+            this.setVisible(false);
+            CustomerMain customerMain = new CustomerMain();
+            customerMain.setAcc(this.getCustomer().account);
+            customerMain.setVisible(true);
         } else {
             showError("Register Failed!");
          

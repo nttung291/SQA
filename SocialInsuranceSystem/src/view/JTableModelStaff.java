@@ -76,19 +76,30 @@ public class JTableModelStaff extends JFrame{
         column.add("See Detail");
         
         insertContract();
-        
+        dm = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                if (column == 0 || column==1 || column==2 || column==3 || column==4 || column ==5 || column ==6) return false;
+                return true;
+            }
+        };
         dm.setDataVector(values, column);
 
         JTable table = new JTable(dm);
         table.getColumn("See Detail").setCellRenderer(new ButtonStaffRenderer());
         table.getColumn("See Detail").setCellEditor(
             new ButtonStaffEditor(new JCheckBox(),dm, addedCustomers));
+        table.getColumnModel().getColumn(2).setPreferredWidth(120);
         JScrollPane scroll = new JScrollPane(table);
         getContentPane().add(scroll);
         setSize(1000, 700);
     }
     
     private void insertContract() {
+        if (compulsoryContracts.size() == 0 && voluntaryContracts.size() == 0) {
+            JOptionPane.showMessageDialog(null, "No register contract request at the moment!", "Message", JOptionPane.PLAIN_MESSAGE);
+        }
+
         for (int i=0;i<compulsoryContracts.size();i++) {
             if (compulsoryContracts.get(i).state != 1) {
                 for (int j=0;j<customers.size();j++) {
