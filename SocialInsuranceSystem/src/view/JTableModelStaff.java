@@ -227,7 +227,11 @@ class ButtonStaffEditor extends DefaultCellEditor implements ReponseContractFram
     button.setOpaque(true);
     button.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-        fireEditingStopped();
+          try {
+              fireEditingStopped();
+          } catch(ArrayIndexOutOfBoundsException ex) {
+
+          }
       }
     });
   }
