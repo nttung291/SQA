@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author habui
  */
 public class Connection {
-    protected static java.sql.Connection connection;
+    public static java.sql.Connection connection;
 
     public static void createConnection(){
 //        if(connection == null){

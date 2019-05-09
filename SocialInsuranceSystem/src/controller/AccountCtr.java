@@ -58,7 +58,7 @@ public class AccountCtr {
     
     public static Account getAccount(String username, String password) {
         ArrayList<Account> allAccount = AccountDAO.selectAllAccount();
-          if (allAccount.size() > 0) {
+        if (allAccount.size() > 0) {
            for (int i=0;i<allAccount.size();i++){
                if (allAccount.get(i).username.equals(username) && allAccount.get(i).password.equals(password)){
                    return allAccount.get(i);
