@@ -72,12 +72,11 @@ public class CompulsoryFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Salary :");
 
-        tfSalary.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tfSalaryMouseReleased(evt);
+        tfSalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfSalaryKeyReleased(evt);
             }
         });
-
         jButton1.setText("Register");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,15 +229,15 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         registerContractFrame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void tfSalaryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfSalaryMouseReleased
+    private void tfSalaryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSalaryKeyReleased
         try {
             String result = tfSalary.getText().replaceAll("[,]","");
             String salary = String.format("%,d", Long.parseLong(result));
             tfSalary.setText(salary);
         } catch (Exception e) {
-           
+
         }
-    }//GEN-LAST:event_tfSalaryMouseReleased
+    }//GEN-LAST:event_tfSalaryKeyReleased
 
     private boolean checkEmptyBlank() {
         if (tfTax.getText().equals("") || tfSalary.getText().equals("") || tfCompany.getText().equals("")) return false;
@@ -273,7 +272,7 @@ public class CompulsoryFrame extends javax.swing.JFrame {
         Float salary;
         String result = tfSalary.getText().replaceAll("[,]","");
         try {
-            salary = Float.parseFloat(result);
+            salary = Float.parseFloat(result+"f");
         } catch (Exception e) {
             showError("Salary is wrong format");
             return false;

@@ -3,14 +3,81 @@
   <component name="ChangeListManager">
     <list default="true" id="548903ca-6bf4-4359-9410-bbbac6bc2b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SocialInsuranceSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SocialInsuranceSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dao/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dao/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/AdminMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/AdminMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CancelContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CancelContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CancelContractFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CancelContractFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CompulsoryFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ConfirmCompulsoryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ConfirmCompulsoryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ConfirmCompulsoryFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ConfirmCompulsoryFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ConfirmVoluntaryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ConfirmVoluntaryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ConfirmVoluntaryFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ConfirmVoluntaryFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ContractOptionFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ContractOptionFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ContractOptionFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ContractOptionFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/CustomerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/CustomerMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/JTableModelStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/JTableModelStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/LoginFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/LoginFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterAccount.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterAccount.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/RegisterContractFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ReponseContractForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ReponseContractForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ReponseContractForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ReponseContractForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ReponseContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ReponseContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/ReponseContractFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/ReponseContractFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/StaffMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/StaffMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/StaffMain.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/StaffMain.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/StartFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/StartFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/StartFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/StartFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/UpdateContractFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/VoluntaryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/VoluntaryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/view/VoluntaryFrame.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/view/VoluntaryFrame.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/dao/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/dao/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/dao/VoluntaryContractDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/dao/VoluntaryContractDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/AdminMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/AdminMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CancelContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CancelContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CompulsoryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ConfirmCompulsoryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ConfirmCompulsoryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ConfirmVoluntaryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ConfirmVoluntaryFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ContractOptionFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ContractOptionFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CustomerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/CustomerMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/JTableModelStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/JTableModelStaff.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/LoginFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/RegisterContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ReponseContractForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ReponseContractForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ReponseContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/ReponseContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/StaffMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/StaffMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/StartFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/StartFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/UpdateContractFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/VoluntaryFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SocialInsuranceSystem/view/VoluntaryFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ConfirmCompulsoryFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ConfirmCompulsoryFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CompulsoryFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CompulsoryFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/CustomerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CustomerMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/JTableModelStaff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/JTableModelStaff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dao/AccountDAOIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dao/AccountDAOIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dao/CompulsoryContractDAOIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dao/CompulsoryContractDAOIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dao/CustomerDAOIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dao/CustomerDAOIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dao/HometownDAOIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dao/HometownDAOIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,36 +86,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SocialInsuranceSystem$StartFrame.ic" NAME="StartFrame Coverage Results" MODIFIED="1557472458835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>view.*</FILTER>
+    </SUITE>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-531880369">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.9" value="2" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="form" value="1" />
-          <entry key="java" value="14" />
+          <entry key="java" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="GUI_DESIGNER_FORM" value="1" />
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="147" />
+          <entry key="java" value="159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="147" />
+          <entry key="JAVA" value="159" />
         </counts>
       </usages-collector>
     </session>
@@ -56,32 +130,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/RegisterAccount.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/view/JTableModelStaff.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-22">
-              <caret line="242" column="35" selection-start-line="242" selection-start-column="35" selection-end-line="242" selection-end-column="35" />
-              <folding>
-                <element signature="e#2579#2871#0" expanded="true" />
-                <element signature="e#2870#2871#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/ConfirmVoluntaryFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1200">
-              <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
+            <state relative-caret-position="1110">
+              <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
+              <folding>
+                <element signature="e#3136#3225#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,10 +151,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/dao/AccountDAOIT.java">
+        <entry file="file://$PROJECT_DIR$/src/view/JTableModelStaff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="177" column="32" selection-end-line="182" />
+            <state relative-caret-position="150">
+              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/view/CompulsoryFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="508">
+              <caret line="274" column="47" selection-start-line="274" selection-start-column="47" selection-end-line="274" selection-end-column="47" />
+              <folding>
+                <element signature="e#1425#1514#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/VoluntaryFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1845">
+              <caret line="253" column="31" selection-start-line="253" selection-start-column="31" selection-end-line="253" selection-end-column="31" />
+              <folding>
+                <element signature="e#1892#1981#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/StartFrame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/CustomerMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="186" column="157" selection-start-line="186" selection-start-column="157" selection-end-line="186" selection-end-column="157" />
             </state>
           </provider>
         </entry>
@@ -107,44 +204,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/dao/CompulsoryContractDAOIT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="39" column="27" lean-forward="true" selection-end-line="170" />
+            <state relative-caret-position="750">
+              <caret line="66" column="64" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/dao/CustomerDAOIT.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="43" column="30" lean-forward="true" selection-end-line="328" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/dao/HometownDAOIT.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="42" column="14" lean-forward="true" selection-end-line="103" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="37" column="13" lean-forward="true" selection-end-line="161" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="35" column="77" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="77" />
+            <state relative-caret-position="405">
+              <caret line="35" column="77" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dao/AccountDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -161,7 +243,6 @@
         <option value="$PROJECT_DIR$/test/view/RegisterAccountIT.java" />
         <option value="$PROJECT_DIR$/test/view/RegisterContractIT.java" />
         <option value="$PROJECT_DIR$/src/view/JTableModel.java" />
-        <option value="$PROJECT_DIR$/src/view/JTableModelStaff.java" />
         <option value="$PROJECT_DIR$/src/view/ConfirmCompulsoryFrame.java" />
         <option value="$PROJECT_DIR$/test/dao/AccountDAOIT.java" />
         <option value="$PROJECT_DIR$/test/dao/CompulsoryContractDAOIT.java" />
@@ -169,6 +250,9 @@
         <option value="$PROJECT_DIR$/test/dao/HometownDAOIT.java" />
         <option value="$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java" />
         <option value="$PROJECT_DIR$/src/dao/Connection.java" />
+        <option value="$PROJECT_DIR$/src/view/JTableModelStaff.java" />
+        <option value="$PROJECT_DIR$/src/view/CustomerMain.java" />
+        <option value="$PROJECT_DIR$/src/view/CompulsoryFrame.java" />
       </list>
     </option>
   </component>
@@ -178,7 +262,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="42" />
     <option name="y" value="23" />
     <option name="width" value="1592" />
@@ -190,6 +274,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -214,6 +299,12 @@
               <item name="SocialInsuranceSystem" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialInsuranceSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialInsuranceSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SocialInsuranceSystem" type="b2602c69:ProjectViewProjectNode" />
@@ -244,13 +335,24 @@
               <item name="SocialInsuranceSystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="SocialInsuranceSystem" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialInsuranceSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialInsuranceSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SocialInsuranceSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SocialInsuranceSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -259,7 +361,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557399393551" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557474060500" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -279,7 +381,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.StartFrame">
     <configuration name="StartFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.StartFrame" />
       <module name="SocialInsuranceSystem" />
@@ -293,9 +395,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AccountDAOIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SocialInsuranceSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.AccountDAOIT" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.StartFrame" />
+      <item itemvalue="JUnit.AccountDAOIT" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.StartFrame" />
+        <item itemvalue="JUnit.AccountDAOIT" />
       </list>
     </recent_temporary>
   </component>
@@ -312,16 +433,25 @@
       <workItem from="1557377863124" duration="1760000" />
       <workItem from="1557379658216" duration="263000" />
       <workItem from="1557399092682" duration="338000" />
+      <workItem from="1557441406826" duration="1182000" />
+      <workItem from="1557472448038" duration="1753000" />
+      <workItem from="1557474290168" duration="829000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="AccountDAOIT - 2019.05.10 at 05h 37m 46s.xml">
+      <configuration name="AccountDAOIT" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2413000" />
+    <option name="totallyTimeSpent" value="6177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1592" height="983" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25935483" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26903227" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -330,7 +460,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32996634" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.121212125" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -349,6 +479,7 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.07290322" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,10 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="65" column="9" selection-start-line="63" selection-start-column="8" selection-end-line="65" selection-end-column="9" />
-          <folding>
-            <element signature="e#1584#1585#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -403,20 +530,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/ConfirmVoluntaryFrame.java">
+    <entry file="file://$PROJECT_DIR$/test/dao/AccountDAOIT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1200">
-          <caret line="101" column="34" selection-start-line="101" selection-start-column="34" selection-end-line="101" selection-end-column="34" />
+        <state relative-caret-position="540">
+          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/JTableModelStaff.java">
+    <entry file="file://$PROJECT_DIR$/test/dao/CustomerDAOIT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="242" column="35" selection-start-line="242" selection-start-column="35" selection-end-line="242" selection-end-column="35" />
+        <state relative-caret-position="390">
+          <caret line="43" column="28" selection-end-line="328" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/CancelContractFrameIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/view/LoginFrameIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/dao/HometownDAOIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="42" column="14" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="37" column="11" selection-end-line="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/ConfirmVoluntaryFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="95" column="28" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="28" />
           <folding>
-            <element signature="e#2579#2871#0" expanded="true" />
-            <element signature="e#2870#2871#0" expanded="true" />
+            <element signature="e#3136#3225#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -428,45 +589,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/dao/AccountDAOIT.java">
+    <entry file="file://$PROJECT_DIR$/src/view/JTableModelStaff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="177" column="32" selection-end-line="182" />
+        <state relative-caret-position="150">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/VoluntaryFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1845">
+          <caret line="253" column="31" selection-start-line="253" selection-start-column="31" selection-end-line="253" selection-end-column="31" />
+          <folding>
+            <element signature="e#1892#1981#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/StartFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/dao/CompulsoryContractDAOIT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="39" column="27" lean-forward="true" selection-end-line="170" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/dao/CustomerDAOIT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="43" column="30" lean-forward="true" selection-end-line="328" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/dao/HometownDAOIT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="42" column="14" lean-forward="true" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/dao/VoluntaryContractDAOIT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="37" column="13" lean-forward="true" selection-end-line="161" />
+        <state relative-caret-position="750">
+          <caret line="66" column="64" selection-start-line="66" selection-start-column="64" selection-end-line="66" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="35" column="77" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="77" />
+        <state relative-caret-position="405">
+          <caret line="35" column="77" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/AccountDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/CustomerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="186" column="157" selection-start-line="186" selection-start-column="157" selection-end-line="186" selection-end-column="157" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/CompulsoryFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="274" column="47" selection-start-line="274" selection-start-column="47" selection-end-line="274" selection-end-column="47" />
+          <folding>
+            <element signature="e#1425#1514#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

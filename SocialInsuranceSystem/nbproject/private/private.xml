@@ -6,26 +6,33 @@
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/VoluntaryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/model/VoluntaryContract.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/dao/CompulsoryContractDAOIT.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/UpdateContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/dao/VoluntaryContractDAOIT.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/CustomerMain.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/StaffMain.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/controller/AccountCtr.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ReponseContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/JTableModel.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/RegisterContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/JTableModelStaff.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ContractOptionFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/CancelContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/UpdateContractFrame.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ConfirmCompulsoryFrame.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/AdminMain.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/RegisterAccount.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/LoginFrame.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/controller/AccountCtr.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/view/LoginFrameIT.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/dao/AccountDAOIT.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ConfirmVoluntaryFrame.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ReponseContractFrame.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/JTableModel.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/RegisterContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/dao/CustomerDAOIT.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/Main.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ReponseContractForm.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/JTableModelStaff.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/view/CancelContractFrameIT.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/view/RegisterAccountIT.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/dao/AccountDAO.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/StartFrame.java</file>
             <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/CompulsoryFrame.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/ContractOptionFrame.java</file>
-            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/src/view/CancelContractFrame.java</file>
+            <file>file:/Users/nttungg/Desktop/Sqa/SQA/SocialInsuranceSystem/test/dao/HometownDAOIT.java</file>
         </group>
     </open-files>
 </project-private>
